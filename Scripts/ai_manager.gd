@@ -1,19 +1,31 @@
 extends Node2D
 
-@onready var http_request = $HTTPRequest 
-var history = []
+@onready var http_request = $HTTPRequest
+@export var prompt = "Let's play a roleplay game. You are now Dieter, a guy who is in prison because he stole pans from an old grandmother. You'll now have a conversation with another inmate."
+@export var history = []
+
 
 func _ready():
-	history.append("Let's play a roleplay game. You are now Dieter, a guy who is in prison because he stole pans from an old grandmother. You'll now have a conversation with another inmate.")
+	var message = load("res://Scripts/history_part.gd").new("Hi i'm Sajeg!")
+	history.append(message)
 	continue_chat()
 
 func continue_chat():
 	var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + load_api_key()
 	var header = ["Content-Type: application/json"]
-	var data = { "contents": []}
+	var data = { 
+		"contents": [], 
+		"systemInstruction": { "role": "user", "parts": [{ "text": prompt }]},
+		"generationConfig": {
+			"temperature": 1,
+			"topK": 64,
+			"topP": 0.95,
+			"maxOutputTokens": 8192,
+			"responseMimeType": "application/json"}
+	}
 	
 	for part in history:
-		data["contents"].append({ "parts": part })
+		data["contents"].append(part.get_formated())
 	
 	var json = JSON.stringify(data)
 	print(json)
@@ -21,6 +33,9 @@ func continue_chat():
 	var error = http_request.request(url, header, HTTPClient.METHOD_POST, json)
 	if error != OK:
 		print("Error occured: " + error)
+	
+func get_models():
+	http_request.request("https://generativelanguage.googleapis.com/v1beta/models?key=" + load_api_key())
 
 func load_api_key():
 	var config = ConfigFile.new()
