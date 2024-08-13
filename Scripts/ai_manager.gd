@@ -1,13 +1,15 @@
 extends Node2D
 
+signal new_response(text: String)
+
 @onready var http_request = $HTTPRequest
-@export var prompt = "Let's play a roleplay game. You are now Dieter, a guy who is in prison because he stole pans from an old grandmother. You'll now have a conversation with another inmate."
-@export var history = []
+@export_multiline var prompt: String = ""
+var history = []
 
 
-func _ready():
-	var message = load("res://Scripts/history_part.gd").new("Hi i'm Sajeg!")
-	history.append(message)
+func add_message(text: String):
+	var obj = load("res://Scripts/history_part.gd").new(text)
+	history.append(obj)
 	continue_chat()
 
 func continue_chat():
@@ -46,6 +48,7 @@ func load_api_key():
 	return config.get_value("API", "api_key", "")
 
 func _on_http_request_request_completed(result, response_code, headers, body):
-	print(body.get_string_from_utf8())
-	
+	if response_code == 200:
+		print(body.get_string_from_utf8())
+		emit_signal("new_response", body.get_string_from_utf8())
 	

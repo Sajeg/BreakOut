@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://t61gnqnkreh4"]
+
+[ext_resource type="Script" path="res://Scripts/sample_conversation.gd" id="1_3qfs5"]
+[ext_resource type="PackedScene" uid="uid://deg2j8cndure2" path="res://Scenes/ai_manager.tscn" id="2_pmk35"]
+
+[node name="SampleConversation" type="Node2D"]
+script = ExtResource("1_3qfs5")
+
+[node name="AIManager" parent="." instance=ExtResource("2_pmk35")]
+prompt = "Let's play a roleplay game. You are now Dieter, a guy who is in prison because he stole pans from an old grandmother. You'll now have a with "
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 203.0
+offset_top = 246.0
+offset_right = 604.0
+offset_bottom = 337.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 199.0
+offset_top = 95.0
+offset_right = 685.0
+offset_bottom = 231.0
+text = "Please type in the field below"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 646.0
+offset_top = 245.0
+offset_right = 757.0
+offset_bottom = 344.0
+text = "Submit"
+
+[connection signal="new_response" from="AIManager" to="." method="_on_ai_manager_new_response"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

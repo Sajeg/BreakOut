@@ -4,6 +4,7 @@
 
 [node name="AIManager" type="Node2D"]
 script = ExtResource("1_gsrx3")
+prompt = "Let's play a roleplay game. You are now Dieter, a guy who is in prison because he stole pans from an old grandmother. You'll now have a conversation with me another inmate. You have Pen in your pocket."
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
