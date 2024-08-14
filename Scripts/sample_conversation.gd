@@ -2,6 +2,11 @@ extends Node2D
 
 
 func _on_button_pressed():
+	var data = {
+		"text": $TextEdit.text,
+		"friendship": $AIManager.friendship,
+		"items": ["paper", "can of pineapple"]
+	}
 	$AIManager.add_message($TextEdit.text)
 
 

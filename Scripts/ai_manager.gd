@@ -3,7 +3,11 @@ extends Node2D
 signal new_response(text: String)
 
 @onready var http_request = $HTTPRequest
-@export_multiline var prompt: String = ""
+@export_multiline var character: String = ""
+@export var friendship = 50
+@export var inventory = ["cans"]
+@export var has_friendship = true
+@export var has_inventory = true
 var history = []
 
 
@@ -17,7 +21,13 @@ func continue_chat():
 	var header = ["Content-Type: application/json"]
 	var data = { 
 		"contents": [], 
-		"systemInstruction": { "role": "user", "parts": [{ "text": prompt }]},
+		"systemInstruction": { "role": "user", "parts": [{ "text": character }]},
+		"safety_settings": [
+			{"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+			{"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+			{"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+			{"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
+		],
 		"generationConfig": {
 			"temperature": 1,
 			"topK": 64,
@@ -48,7 +58,11 @@ func load_api_key():
 	return config.get_value("API", "api_key", "")
 
 func _on_http_request_request_completed(result, response_code, headers, body):
-	if response_code == 200:
+		#if response_code == 200:
 		print(body.get_string_from_utf8())
-		emit_signal("new_response", body.get_string_from_utf8())
+		var model_response = JSON.parse_string(body.get_string_from_utf8())
+		var model_text = JSON.stringify(model_response["candidates"][0]["content"]["parts"][0]["text"])
+		var model_message = load("res://Scripts/history_part.gd").new(model_text, "model")
+		history.append(model_message)
+		emit_signal("new_response", model_text)
 	
