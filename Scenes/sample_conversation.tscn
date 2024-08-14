@@ -7,6 +7,7 @@
 script = ExtResource("1_3qfs5")
 
 [node name="AIManager" parent="." instance=ExtResource("2_pmk35")]
+character = "You are Dieter. You are in the prison because you stole clothes from a store. "
 
 [node name="TextEdit" type="TextEdit" parent="."]
 offset_left = 193.0
@@ -27,6 +28,18 @@ offset_top = 488.0
 offset_right = 891.0
 offset_bottom = 587.0
 text = "Submit"
+
+[node name="Friendship" type="Label" parent="."]
+offset_left = 180.0
+offset_top = 601.0
+offset_right = 374.0
+offset_bottom = 624.0
+
+[node name="NPCInventory" type="Label" parent="."]
+offset_left = 716.0
+offset_top = 599.0
+offset_right = 849.0
+offset_bottom = 629.0
 
 [connection signal="new_response" from="AIManager" to="." method="_on_ai_manager_new_response"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

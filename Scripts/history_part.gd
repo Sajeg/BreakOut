@@ -10,5 +10,11 @@ func _init(content: String, role: String = "user"):
 func is_model() -> bool:
 	return role == "model"
 
-func get_formated():
-	return {"role": role, "parts": [{"text": content}]}
+func get_formated(inventory, friendship, give):
+	var prompt = {
+		"message": content,
+		"inventory": inventory,
+		"friendship": friendship,
+		"give": give
+	}
+	return {"role": role, "parts": [{"text": JSON.stringify(prompt)}]}
