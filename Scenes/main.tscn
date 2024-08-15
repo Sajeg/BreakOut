@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://xumfropcot62"]
+[gd_scene load_steps=14 format=3 uid="uid://xumfropcot62"]
 
 [ext_resource type="Texture2D" uid="uid://bflkw4mk2m25q" path="res://Assets/Tiles.png" id="1_din52"]
 [ext_resource type="Texture2D" uid="uid://b4vypwhaqy2cc" path="res://Assets/Props.png" id="2_bi2rq"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="2_nuvfg"]
 [ext_resource type="Texture2D" uid="uid://brlxmq7i4pe3q" path="res://Assets/void.png" id="3_d8yfx"]
+[ext_resource type="Theme" uid="uid://cpwjiok04og8e" path="res://Assets/theme.tres" id="4_7m6mf"]
 [ext_resource type="PackedScene" uid="uid://csd6ikilylmnc" path="res://Scenes/wizard.tscn" id="4_gi0r6"]
 [ext_resource type="PackedScene" uid="uid://deg2j8cndure2" path="res://Scenes/ai_manager.tscn" id="4_rldry"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="6_tdxaa"]
@@ -1630,8 +1631,50 @@ layer_1/tile_data = PackedInt32Array(327682, 0, 0, 327683, 65536, 0, 327684, 655
 layer_2/name = "Decorations"
 layer_2/tile_data = PackedInt32Array(917517, 196608, 19, 786445, 262144, 18, 393219, 589825, 1, 327683, 589825, 0, 720899, 65537, 2)
 
+[node name="Guide0" type="Label" parent="."]
+offset_left = 42.0
+offset_top = 125.0
+offset_right = 105.0
+offset_bottom = 133.0
+theme = ExtResource("4_7m6mf")
+theme_override_font_sizes/font_size = 6
+text = "Welcome to BreakOut"
+
+[node name="Guide1" type="Label" parent="."]
+offset_left = 61.0
+offset_top = 158.0
+offset_right = 135.0
+offset_bottom = 174.0
+theme = ExtResource("4_7m6mf")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 6
+text = "Your goal is to find a 
+loophole out of this place"
+
+[node name="Guide2" type="Label" parent="."]
+offset_left = 143.0
+offset_top = 179.0
+offset_right = 189.0
+offset_bottom = 195.0
+theme = ExtResource("4_7m6mf")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 6
+text = "Press E to 
+loot this Barrel"
+
+[node name="Guide3" type="Label" parent="."]
+offset_left = 190.0
+offset_top = 212.0
+offset_right = 242.0
+offset_bottom = 228.0
+theme = ExtResource("4_7m6mf")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 6
+text = "And then E
+to speak with him"
+
 [node name="Wizard" parent="." instance=ExtResource("4_gi0r6")]
-position = Vector2(179, 202)
+position = Vector2(230, 220)
 
 [node name="AIManager" parent="Wizard" node_paths=PackedStringArray("player") instance=ExtResource("4_rldry")]
 offset_left = -179.0
@@ -1639,12 +1682,12 @@ offset_top = -202.0
 offset_right = -179.0
 offset_bottom = -202.0
 npc_name = "Billy"
-character = "a friendly wizard. Your task is to keep the Dungeon clean. However you don't have a broom and you desperately want one."
+character = "a friendly wizard. Your task is to keep the Dungeon clean. However you don't have a broom and you desperately want one. You'll reward the person who gives you a broom."
 inventory = ["Key"]
 player = NodePath("../../Player")
 
 [node name="Barrel" parent="." instance=ExtResource("6_tdxaa")]
-position = Vector2(183, 147)
+position = Vector2(183, 174)
 loot_overwrite = "Broom"
 
 [node name="Door" parent="." instance=ExtResource("8_e8xbr")]

@@ -42,7 +42,7 @@ func _input(event):
 		else:
 			loot_node.set_looted()
 			add_to_inventory(vars.available_loot[randi() % vars.available_loot.size()])
-			tooltip.visible = false
+		tooltip.visible = false
 	elif event.is_action_pressed("interact") && can_unlock:
 		if unlock_node.locked:
 			if "Key" in inventory:
@@ -83,7 +83,6 @@ func add_to_inventory(item):
 	$Timer.start()
 
 func _on_area_2d_area_entered(area):
-	print(area.name)
 	if area.name == "Wizard":
 		tooltip.visible = true
 		tooltip.text = "Press E to speak"
@@ -91,8 +90,8 @@ func _on_area_2d_area_entered(area):
 	elif area.name == "Object":
 		loot_node = area.get_parent()
 		can_loot = loot_node.can_loot()
-		tooltip.text = "Press E to loot"
 		if can_loot:
+			tooltip.text = "Press E to loot"
 			tooltip.visible = true
 	elif area.name == "Door":
 		unlock_node = area.get_parent()
