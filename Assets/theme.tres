@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cpwjiok04og8e"]
+
+[ext_resource type="FontFile" uid="uid://b11hb11meid84" path="res://Assets/Fonts/PixelifySans-VariableFont_wght.ttf" id="1_iou32"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0cdh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1p5a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7gk5v"]
+
+[resource]
+default_font = ExtResource("1_iou32")
+default_font_size = 11
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_y0cdh")
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_t1p5a")
+LineEdit/styles/read_only = SubResource("StyleBoxEmpty_7gk5v")

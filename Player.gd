@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+@onready var tooltip = get_node("tooltip")
+@onready var animPlayer = get_node("AnimationPlayer")
+
+@export var inventory = []
+
 var speed = 150
 var can_speak = false
 var is_speaking = false
@@ -21,26 +26,34 @@ func process_input(delta):
 	move_and_slide()
 	
 	if (is_idling):
-		$AnimationPlayer.play("idle")
+		animPlayer.play("idle")
 	else:
 		$"Idle-sheet".flip_h = needs_flip
 		$"Run-sheet".flip_h = needs_flip
-		$AnimationPlayer.play("walk")
+		animPlayer.play("walk")
 
 func _input(event):
-	if event.is_action("interact") && can_speak:
-		if is_speaking:
-			is_speaking = false
-		else: 
+	if event.is_action_pressed("interact") && can_speak:
+		#if is_speaking:
+		#	tooltip.visible = true
+		#	$SpeakUI.visible = false
+		#	is_speaking = false
+		#else:
+			tooltip.visible = false
+			$SpeakUI.visible = true
 			is_speaking = true
 
-
-func _on_area_2d_body_entered(body):
-	print(body)
-	if body.name == "Wizard":
+func _on_area_2d_area_entered(area):
+	if area.name == "Wizard":
+		tooltip.visible = true
 		can_speak = true
 
 
-func _on_area_2d_body_exited(body):
-	if body.name == "Wizard":
+func _on_area_2d_area_exited(area):
+	if area.name == "Wizard":
+		tooltip.visible = false
 		can_speak = false
+
+
+func _on_button_pressed():
+	pass # Replace with function body.

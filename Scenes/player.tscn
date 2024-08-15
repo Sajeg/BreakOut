@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bys67aluqyox4"]
+[gd_scene load_steps=13 format=3 uid="uid://bys67aluqyox4"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_vwn2r"]
 [ext_resource type="Texture2D" uid="uid://ciwhurobshy73" path="res://Assets/Player/Idle-Sheet.png" id="2_a7yuu"]
 [ext_resource type="Texture2D" uid="uid://exomugydqmjm" path="res://Assets/Player/Run-Sheet.png" id="3_csmki"]
+[ext_resource type="Theme" uid="uid://cpwjiok04og8e" path="res://Assets/theme.tres" id="4_1qt2t"]
+[ext_resource type="Script" path="res://Scenes/SpeakUI.gd" id="4_2w3k3"]
+[ext_resource type="PackedScene" uid="uid://deg2j8cndure2" path="res://Scenes/ai_manager.tscn" id="6_cxeah"]
 
 [sub_resource type="Animation" id="Animation_fh4qs"]
 length = 0.001
@@ -144,11 +147,10 @@ _data = {
 "walk": SubResource("Animation_jdpdj")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_616yv"]
-size = Vector2(25, 31)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1lfpk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ng2hl"]
-radius = 15.0
+radius = 16.1245
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_vwn2r")
@@ -173,7 +175,7 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -14.5)
-shape = SubResource("RectangleShape2D_616yv")
+shape = SubResource("CapsuleShape2D_1lfpk")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -186,7 +188,6 @@ shape = SubResource("CircleShape2D_ng2hl")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, -13)
 zoom = Vector2(3, 3)
-position_smoothing_enabled = true
 
 [node name="tooltip" type="Label" parent="."]
 visible = false
@@ -196,12 +197,85 @@ offset_right = 44.0
 offset_bottom = 95.0
 theme_override_font_sizes/font_size = 10
 text = "Press E to interact"
+metadata/_edit_use_anchors_ = true
 
 [node name="SpeakUI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -192.0
+offset_top = 18.0
+offset_right = 191.0
+offset_bottom = 95.0
+script = ExtResource("4_2w3k3")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="ColorRect" type="ColorRect" parent="SpeakUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[node name="Input" type="TextEdit" parent="SpeakUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 11.5
+offset_top = -33.5
+offset_right = 104.5
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_1qt2t")
+theme_override_font_sizes/font_size = 7
+placeholder_text = "What do you want to say?"
+wrap_mode = 1
+
+[node name="Output" type="RichTextLabel" parent="SpeakUI"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 187.0
+offset_bottom = 75.0
+theme = ExtResource("4_1qt2t")
+bbcode_enabled = true
+
+[node name="Inventory" type="ItemList" parent="SpeakUI"]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 16.0
+offset_right = 379.0
+offset_bottom = 53.0
+
+[node name="Label" type="Label" parent="SpeakUI"]
+layout_mode = 0
+offset_left = 307.0
+offset_top = 3.0
+offset_right = 378.0
+offset_bottom = 14.0
+theme = ExtResource("4_1qt2t")
+theme_override_font_sizes/font_size = 9
+text = "Your Inventory:"
+
+[node name="Button" type="Button" parent="SpeakUI"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 54.0
+offset_right = 366.0
+offset_bottom = 76.0
+theme = ExtResource("4_1qt2t")
+text = "Submit"
+
+[node name="AIManager" parent="SpeakUI" instance=ExtResource("6_cxeah")]
+character = "Your a Billy a friendly wizard. Your task is to keep the Dungeon clean."
+inventory = ["Broom", "Friendly Spider"]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="pressed" from="SpeakUI/Button" to="SpeakUI" method="_on_button_pressed"]
+[connection signal="new_response" from="SpeakUI/AIManager" to="SpeakUI" method="_on_ai_manager_new_response"]

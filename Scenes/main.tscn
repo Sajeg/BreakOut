@@ -1603,9 +1603,9 @@ layer_1/tile_data = PackedInt32Array(327682, 0, 0, 327683, 65536, 0, 327684, 655
 layer_2/name = "Decorations"
 layer_2/tile_data = PackedInt32Array(917517, 196608, 19, 786445, 262144, 18, 393219, 589825, 1, 327683, 589825, 0, 589835, 65537, 0, 720899, 65537, 2)
 
+[node name="Wizard" parent="." instance=ExtResource("4_gi0r6")]
+position = Vector2(179, 202)
+
 [node name="Player" parent="." instance=ExtResource("2_nuvfg")]
 position = Vector2(67, 153)
 motion_mode = 1
-
-[node name="Wizard" parent="." instance=ExtResource("4_gi0r6")]
-position = Vector2(179, 202)
