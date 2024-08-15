@@ -10,7 +10,7 @@
 
 [resource]
 default_font = ExtResource("1_iou32")
-default_font_size = 11
+default_font_size = 8
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_y0cdh")
 LineEdit/styles/normal = SubResource("StyleBoxEmpty_t1p5a")
 LineEdit/styles/read_only = SubResource("StyleBoxEmpty_7gk5v")

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://vlj7bhi0c4gq"]
+
+[ext_resource type="Script" path="res://Scripts/Barrel.gd" id="1_gykoh"]
+[ext_resource type="Texture2D" uid="uid://dcf1okg51v23f" path="res://Assets/Props/Barrel.png" id="2_ni3nf"]
+[ext_resource type="Texture2D" uid="uid://bwouyhut5oj4h" path="res://Assets/Props/Barrel_empty.png" id="3_vxa6d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkp24"]
+radius = 8.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0s5u5"]
+radius = 13.0
+height = 38.0
+
+[node name="Barrel" type="StaticBody2D"]
+script = ExtResource("1_gykoh")
+
+[node name="Barrel" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_ni3nf")
+
+[node name="Barrel_empty" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(0, 0.5)
+texture = ExtResource("3_vxa6d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_qkp24")
+
+[node name="Object" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_0s5u5")

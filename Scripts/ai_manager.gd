@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 signal new_response(text: String, friendship: int, inventory: Array)
 
@@ -17,6 +17,7 @@ func add_message(text: String, give = []):
 	continue_chat(give)
 
 func continue_chat(give):
+	print("Sending request")
 	var prompt = "Let's play a prison role playing game where we both are imates."
 	prompt += character
 	if has_friendship:
@@ -47,7 +48,6 @@ func continue_chat(give):
 		data["contents"].append(part.get_formated(inventory, friendship, give))
 	
 	var json = JSON.stringify(data)
-	print(json)
 	
 	var error = http_request.request(url, header, HTTPClient.METHOD_POST, json)
 	if error != OK:
@@ -65,6 +65,7 @@ func load_api_key():
 	return config.get_value("API", "api_key", "")
 
 func _on_http_request_request_completed(result, response_code, headers, body):
+	print("Got response")
 	if response_code == 200:
 		var model_response = JSON.parse_string(body.get_string_from_utf8())
 		var model_text = JSON.stringify(model_response["candidates"][0]["content"]["parts"][0]["text"])

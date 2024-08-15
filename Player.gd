@@ -4,11 +4,13 @@ extends CharacterBody2D
 @onready var animPlayer = get_node("AnimationPlayer")
 
 @export var inventory = []
+@export var ai: Control
 
 var speed = 150
 var can_speak = false
 var is_speaking = false
 var can_loot = false
+var loot_node
 
 func _physics_process(delta):
 	process_input(delta)
@@ -34,26 +36,41 @@ func process_input(delta):
 
 func _input(event):
 	if event.is_action_pressed("interact") && can_speak:
-		#if is_speaking:
-		#	tooltip.visible = true
-		#	$SpeakUI.visible = false
-		#	is_speaking = false
-		#else:
+		if not is_speaking:
 			tooltip.visible = false
 			$SpeakUI.visible = true
 			is_speaking = true
+	if event.is_action_pressed("exit") && can_speak:
+		if is_speaking:
+			tooltip.visible = true
+			$SpeakUI.visible = false
+			is_speaking = false
+	
+	if event.is_action_pressed("interact") && can_loot:
+		if loot_node.loot_overwrite == null:
+			loot_node.set_looted()
+			add_to_inventory(loot_node.loot_overwrite)
+		else:
+			loot_node.set_looted()
+			add_to_inventory(vars.avaible_loot[randi() % vars.avaible_loot.size()])
+
+func add_to_inventory(item):
+	inventory.append(item)
+	$InventoryNotification.text = "New Item received: " + item
+	$InventoryNotification.visible = true
 
 func _on_area_2d_area_entered(area):
 	if area.name == "Wizard":
 		tooltip.visible = true
 		can_speak = true
+	elif area.name == "Object":
+		loot_node = area.get_parent()
+		can_loot = loot_node.get
 
 
 func _on_area_2d_area_exited(area):
 	if area.name == "Wizard":
 		tooltip.visible = false
 		can_speak = false
-
-
-func _on_button_pressed():
-	pass # Replace with function body.
+	elif area.name == "Object":
+		can_loot = false

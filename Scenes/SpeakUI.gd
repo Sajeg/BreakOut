@@ -4,9 +4,9 @@ extends Control
 
 func _on_button_pressed():
 	if player.inventory == ["Nothing"]:
-		$AIManager.add_message($Input.text)
+		player.ai.add_message($Input.text)
 	else:
-		$AIManager.add_message($Input.text, player.inventory)
+		player.ai.add_message($Input.text, player.inventory)
 		player.inventory == []
 
 
