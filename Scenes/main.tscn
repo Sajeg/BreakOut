@@ -1638,8 +1638,8 @@ offset_top = -202.0
 offset_right = -179.0
 offset_bottom = -202.0
 npc_name = "Billy"
-character = "a friendly wizard. Your task is to keep the Dungeon clean."
-inventory = ["Broom", "Friendly Spider"]
+character = "a friendly wizard. Your task is to keep the Dungeon clean. However you don't have a broom and you desperately want one."
+inventory = ["Key"]
 player = NodePath("../../Player")
 
 [node name="Player" parent="." node_paths=PackedStringArray("ai") instance=ExtResource("2_nuvfg")]
@@ -1649,7 +1649,7 @@ ai = NodePath("../Wizard/AIManager")
 
 [node name="Barrel" parent="." instance=ExtResource("6_tdxaa")]
 position = Vector2(183, 147)
-loot_overwrite = "Key"
+loot_overwrite = "Broom"
 
 [connection signal="new_response" from="Wizard/AIManager" to="Player/SpeakUI" method="_on_ai_manager_new_response"]
 

@@ -47,7 +47,8 @@ func _input(event):
 			$SpeakUI/Name.text = "Give to " + ai.npc_name + ":"
 			is_speaking = false
 	elif event.is_action_pressed("interact") && can_loot:
-		if loot_node.loot_overwrite == "":
+		print(loot_node.loot_overwrite)
+		if loot_node.loot_overwrite != "":
 			loot_node.set_looted()
 			add_to_inventory(loot_node.loot_overwrite)
 		else:
