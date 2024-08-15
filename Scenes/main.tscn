@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://xumfropcot62"]
+[gd_scene load_steps=13 format=3 uid="uid://xumfropcot62"]
 
 [ext_resource type="Texture2D" uid="uid://bflkw4mk2m25q" path="res://Assets/Tiles.png" id="1_din52"]
 [ext_resource type="Texture2D" uid="uid://b4vypwhaqy2cc" path="res://Assets/Props.png" id="2_bi2rq"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://csd6ikilylmnc" path="res://Scenes/wizard.tscn" id="4_gi0r6"]
 [ext_resource type="PackedScene" uid="uid://deg2j8cndure2" path="res://Scenes/ai_manager.tscn" id="4_rldry"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="6_tdxaa"]
+[ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="8_e8xbr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fml"]
 texture = ExtResource("1_din52")
@@ -1642,14 +1643,17 @@ character = "a friendly wizard. Your task is to keep the Dungeon clean. However 
 inventory = ["Key"]
 player = NodePath("../../Player")
 
+[node name="Barrel" parent="." instance=ExtResource("6_tdxaa")]
+position = Vector2(183, 147)
+loot_overwrite = "Broom"
+
+[node name="Door" parent="." instance=ExtResource("8_e8xbr")]
+position = Vector2(176, 88)
+
 [node name="Player" parent="." node_paths=PackedStringArray("ai") instance=ExtResource("2_nuvfg")]
 position = Vector2(67, 153)
 motion_mode = 1
 ai = NodePath("../Wizard/AIManager")
-
-[node name="Barrel" parent="." instance=ExtResource("6_tdxaa")]
-position = Vector2(183, 147)
-loot_overwrite = "Broom"
 
 [connection signal="new_response" from="Wizard/AIManager" to="Player/SpeakUI" method="_on_ai_manager_new_response"]
 

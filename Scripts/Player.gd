@@ -11,6 +11,8 @@ var can_speak = false
 var is_speaking = false
 var can_loot = false
 var loot_node
+var can_unlock = false
+var unlock_node
 
 func _physics_process(delta):
 	process_input(delta)
@@ -33,7 +35,27 @@ func process_input(_delta):
 		animPlayer.play("walk")
 
 func _input(event):
-	if event.is_action_pressed("interact") && can_speak:
+	if event.is_action_pressed("interact") && can_loot:
+		if loot_node.loot_overwrite != "":
+			loot_node.set_looted()
+			add_to_inventory(loot_node.loot_overwrite)
+		else:
+			loot_node.set_looted()
+			add_to_inventory(vars.available_loot[randi() % vars.available_loot.size()])
+			tooltip.visible = false
+	elif event.is_action_pressed("interact") && can_unlock:
+		if unlock_node.locked:
+			if "Key" in inventory:
+				inventory.erase("key")
+				unlock_node.unlock()
+				tooltip.text = "Press E to go to next room"
+			else:
+				$InventoryNotification.text = "No Key in inventory"
+				$InventoryNotification.visible = true
+				$Timer.start()
+		else:
+			get_tree().change_scene_to_packed(unlock_node.next_scene)
+	elif event.is_action_pressed("interact") && can_speak:
 		if not is_speaking:
 			tooltip.visible = false
 			$SpeakUI.visible = true
@@ -46,15 +68,7 @@ func _input(event):
 			$SpeakUI.visible = false
 			$SpeakUI/Name.text = "Give to " + ai.npc_name + ":"
 			is_speaking = false
-	elif event.is_action_pressed("interact") && can_loot:
-		print(loot_node.loot_overwrite)
-		if loot_node.loot_overwrite != "":
-			loot_node.set_looted()
-			add_to_inventory(loot_node.loot_overwrite)
-		else:
-			loot_node.set_looted()
-			add_to_inventory(vars.available_loot[randi() % vars.available_loot.size()])
-		tooltip.visible = false
+	
 
 func update_inventory_list():
 	$SpeakUI/Inventory.clear()
@@ -69,6 +83,7 @@ func add_to_inventory(item):
 	$Timer.start()
 
 func _on_area_2d_area_entered(area):
+	print(area.name)
 	if area.name == "Wizard":
 		tooltip.visible = true
 		tooltip.text = "Press E to speak"
@@ -79,15 +94,25 @@ func _on_area_2d_area_entered(area):
 		tooltip.text = "Press E to loot"
 		if can_loot:
 			tooltip.visible = true
+	elif area.name == "Door":
+		unlock_node = area.get_parent()
+		can_unlock = true
+		tooltip.visible = true
+		if unlock_node.locked:
+			tooltip.text = "Press E to unlock the door"
+		else:
+			tooltip.text = "Press E to go to next room"
 
 
 func _on_area_2d_area_exited(area):
 	if area.name == "Wizard":
-		tooltip.visible = false
 		can_speak = false
 	elif area.name == "Object":
-		tooltip.visible = false
 		can_loot = false
+	elif area.name == "Door":
+		can_unlock = false
+	if !can_speak && !can_speak && !can_unlock:
+		tooltip.visible = false
 
 
 func _on_timer_timeout():
