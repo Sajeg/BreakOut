@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bys67aluqyox4"]
+[gd_scene load_steps=9 format=3 uid="uid://csd6ikilylmnc"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_vwn2r"]
-[ext_resource type="Texture2D" uid="uid://ciwhurobshy73" path="res://Assets/Player/Idle-Sheet.png" id="2_a7yuu"]
-[ext_resource type="Texture2D" uid="uid://exomugydqmjm" path="res://Assets/Player/Run-Sheet.png" id="3_csmki"]
+[ext_resource type="Texture2D" uid="uid://bkp4jrea1ejr0" path="res://Assets/Wizard/Idle-Sheet.png" id="1_1akyu"]
+[ext_resource type="Texture2D" uid="uid://w7vvqpfixo5m" path="res://Assets/Wizard/Run-Sheet.png" id="2_eks4e"]
 
 [sub_resource type="Animation" id="Animation_fh4qs"]
 length = 0.001
@@ -144,26 +143,25 @@ _data = {
 "walk": SubResource("Animation_jdpdj")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_616yv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ti3ss"]
 size = Vector2(25, 31)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ng2hl"]
-radius = 15.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_j45px"]
+radius = 42.107
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_vwn2r")
+[node name="Wizard" type="CharacterBody2D"]
 
 [node name="Idle-sheet" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -16)
-texture = ExtResource("2_a7yuu")
+texture = ExtResource("1_1akyu")
 hframes = 4
 
 [node name="Run-sheet" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 1
 position = Vector2(0, -32)
-texture = ExtResource("3_csmki")
+texture = ExtResource("2_eks4e")
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -173,35 +171,12 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -14.5)
-shape = SubResource("RectangleShape2D_616yv")
+shape = SubResource("RectangleShape2D_ti3ss")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Interact" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
 position = Vector2(1, -15)
-shape = SubResource("CircleShape2D_ng2hl")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-1, -13)
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-
-[node name="tooltip" type="Label" parent="."]
-visible = false
-offset_left = -44.0
-offset_top = 81.0
-offset_right = 44.0
-offset_bottom = 95.0
-theme_override_font_sizes/font_size = 10
-text = "Press E to interact"
-
-[node name="SpeakUI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+shape = SubResource("CircleShape2D_j45px")
