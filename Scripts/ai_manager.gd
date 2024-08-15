@@ -22,12 +22,13 @@ func add_message(text: String, give_new = []):
 
 func continue_chat():
 	print("Sending request")
-	var prompt = "Let's play a prison role playing game where we both are imates. You are "
+	print(give)
+	var prompt = "Let's play a dungeon role playing game. You are "
 	prompt += npc_name + character
 	if has_friendship:
-		prompt += "Together with the text from me you'll receive a friendship score on a scale of 0-100 where 100 is love and 0 is enemie you can change the score based on our conversation, but always return the score. And the longer the conversation is the less the score changes."
+		prompt += "Together with the text from me you'll receive a friendship score on a scale of 0-100 where 100 is love and 0 is enemies you can change the score based on our conversation, but always return the score. And the longer the conversation is the less the score changes."
 	if has_inventory:
-		prompt += "You will also receive a set of items that you own. If you want to give me a item you own you can simply don't return it. But please return the rest. You can also receive items from the Player for trading."
+		prompt += "You will also receive a set of items that you own. If you want to give me a item you own you can simply don't return it. But please return the rest. You can also receive items from the Player for trading. If that is the case add these to the items you return."
 	
 	var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + load_api_key()
 	var header = ["Content-Type: application/json"]
@@ -68,7 +69,7 @@ func load_api_key():
 		return ""
 	return config.get_value("API", "api_key", "")
 
-func _on_http_request_request_completed(result, response_code, headers, body):
+func _on_http_request_request_completed(_result, response_code, _headers, body):
 	print("Got response")
 	if response_code == 200:
 		var model_response = JSON.parse_string(body.get_string_from_utf8())
@@ -76,12 +77,22 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		var model_string = JSON.parse_string(JSON.parse_string(model_text))
 		var model_message = model_string["message"]
 		friendship = model_string["friendship"]
+		print(inventory)
+		print(model_string["inventory"])
 		if inventory != model_string["inventory"]:
-			if inventory.size() <= model_string["inventory"]:
-				# To-Do
-				pass
+			var diff = difference(inventory, model_string["inventory"])
+			for item in diff:
+				player.add_to_inventory(item)
+		inventory = model_string["inventory"]
 		var model_message_object = load("res://Scripts/history_part.gd").new(model_message, "model")
 		history.append(model_message_object)
 		emit_signal("new_response", model_message, friendship, inventory)
 	else:
-		print("EROR: " + body.get_string_from_utf8())
+		print("ERROR: " + body.get_string_from_utf8())
+
+func difference(arr1, arr2):
+	var only_in_arr1 = []
+	for v in arr1:
+		if not (v in arr2):
+			only_in_arr1.append(v)
+	return only_in_arr1

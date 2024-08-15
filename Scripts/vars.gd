@@ -1,5 +1,5 @@
 extends Node
 
-var avaible_loot = [
-	"key", "cans", "potatoe"
+var available_loot = [
+	"key", "cans", "potato"
 ]

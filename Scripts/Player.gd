@@ -15,11 +15,9 @@ var loot_node
 func _physics_process(delta):
 	process_input(delta)
 
-func process_input(delta):
+func process_input(_delta):
 	if is_speaking:
 		return
-	var is_walking = false
-	var input_vector = Vector2.ZERO
 	velocity.x = (Input.get_action_strength("right") - Input.get_action_strength("left")) * speed
 	velocity.y = (Input.get_action_strength("down") - Input.get_action_strength("up")) * speed
 	var is_idling = is_zero_approx(velocity.y) && is_zero_approx(velocity.x)
@@ -40,8 +38,7 @@ func _input(event):
 			tooltip.visible = false
 			$SpeakUI.visible = true
 			$SpeakUI/Name.text = "Give to " + ai.npc_name + ":"
-			for item in inventory:
-				$SpeakUI/Inventory.add_item(item)
+			update_inventory_list()
 			is_speaking = true
 	elif event.is_action_pressed("exit") && can_speak:
 		if is_speaking:
@@ -55,8 +52,14 @@ func _input(event):
 			add_to_inventory(loot_node.loot_overwrite)
 		else:
 			loot_node.set_looted()
-			add_to_inventory(vars.avaible_loot[randi() % vars.avaible_loot.size()])
+			add_to_inventory(vars.available_loot[randi() % vars.available_loot.size()])
 		tooltip.visible = false
+
+func update_inventory_list():
+	$SpeakUI/Inventory.clear()
+	$SpeakUI/Inventory.add_item("Nothing")
+	for item in inventory:
+		$SpeakUI/Inventory.add_item(item)
 
 func add_to_inventory(item):
 	inventory.append(item)

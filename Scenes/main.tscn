@@ -1632,7 +1632,7 @@ layer_2/tile_data = PackedInt32Array(917517, 196608, 19, 786445, 262144, 18, 393
 [node name="Wizard" parent="." instance=ExtResource("4_gi0r6")]
 position = Vector2(179, 202)
 
-[node name="AIManager" parent="Wizard" instance=ExtResource("4_rldry")]
+[node name="AIManager" parent="Wizard" node_paths=PackedStringArray("player") instance=ExtResource("4_rldry")]
 offset_left = -179.0
 offset_top = -202.0
 offset_right = -179.0
@@ -1640,6 +1640,7 @@ offset_bottom = -202.0
 npc_name = "Billy"
 character = "a friendly wizard. Your task is to keep the Dungeon clean."
 inventory = ["Broom", "Friendly Spider"]
+player = NodePath("../../Player")
 
 [node name="Player" parent="." node_paths=PackedStringArray("ai") instance=ExtResource("2_nuvfg")]
 position = Vector2(67, 153)
