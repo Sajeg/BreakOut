@@ -39,33 +39,42 @@ func _input(event):
 		if not is_speaking:
 			tooltip.visible = false
 			$SpeakUI.visible = true
+			$SpeakUI/Name.text = "Give to " + ai.npc_name + ":"
+			for item in inventory:
+				$SpeakUI/Inventory.add_item(item)
 			is_speaking = true
-	if event.is_action_pressed("exit") && can_speak:
+	elif event.is_action_pressed("exit") && can_speak:
 		if is_speaking:
 			tooltip.visible = true
 			$SpeakUI.visible = false
+			$SpeakUI/Name.text = "Give to " + ai.npc_name + ":"
 			is_speaking = false
-	
-	if event.is_action_pressed("interact") && can_loot:
-		if loot_node.loot_overwrite == null:
+	elif event.is_action_pressed("interact") && can_loot:
+		if loot_node.loot_overwrite == "":
 			loot_node.set_looted()
 			add_to_inventory(loot_node.loot_overwrite)
 		else:
 			loot_node.set_looted()
 			add_to_inventory(vars.avaible_loot[randi() % vars.avaible_loot.size()])
+		tooltip.visible = false
 
 func add_to_inventory(item):
 	inventory.append(item)
 	$InventoryNotification.text = "New Item received: " + item
 	$InventoryNotification.visible = true
+	$Timer.start()
 
 func _on_area_2d_area_entered(area):
 	if area.name == "Wizard":
 		tooltip.visible = true
+		tooltip.text = "Press E to speak"
 		can_speak = true
 	elif area.name == "Object":
 		loot_node = area.get_parent()
-		can_loot = loot_node.get
+		can_loot = loot_node.can_loot()
+		tooltip.text = "Press E to loot"
+		if can_loot:
+			tooltip.visible = true
 
 
 func _on_area_2d_area_exited(area):
@@ -73,4 +82,9 @@ func _on_area_2d_area_exited(area):
 		tooltip.visible = false
 		can_speak = false
 	elif area.name == "Object":
+		tooltip.visible = false
 		can_loot = false
+
+
+func _on_timer_timeout():
+	$InventoryNotification.visible = false

@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://bys67aluqyox4"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_vwn2r"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ayp0x"]
 [ext_resource type="Texture2D" uid="uid://ciwhurobshy73" path="res://Assets/Player/Idle-Sheet.png" id="2_a7yuu"]
 [ext_resource type="Texture2D" uid="uid://exomugydqmjm" path="res://Assets/Player/Run-Sheet.png" id="3_csmki"]
 [ext_resource type="Theme" uid="uid://cpwjiok04og8e" path="res://Assets/theme.tres" id="4_1qt2t"]
-[ext_resource type="Script" path="res://Scenes/SpeakUI.gd" id="4_2w3k3"]
+[ext_resource type="Script" path="res://Scripts/SpeakUI.gd" id="5_ircpd"]
 
 [sub_resource type="Animation" id="Animation_fh4qs"]
 length = 0.001
@@ -152,7 +152,7 @@ _data = {
 radius = 16.1245
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_vwn2r")
+script = ExtResource("1_ayp0x")
 
 [node name="Idle-sheet" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -192,11 +192,11 @@ zoom = Vector2(3, 3)
 visible = false
 offset_left = -44.0
 offset_top = 81.0
-offset_right = 44.0
+offset_right = 53.0
 offset_bottom = 95.0
+theme = ExtResource("4_1qt2t")
 theme_override_font_sizes/font_size = 10
 text = "Press E to interact"
-metadata/_edit_use_anchors_ = true
 
 [node name="SpeakUI" type="Control" parent="."]
 visible = false
@@ -206,7 +206,7 @@ offset_left = -192.0
 offset_top = 18.0
 offset_right = 191.0
 offset_bottom = 95.0
-script = ExtResource("4_2w3k3")
+script = ExtResource("5_ircpd")
 
 [node name="ColorRect" type="ColorRect" parent="SpeakUI"]
 layout_mode = 1
@@ -250,8 +250,12 @@ offset_left = 309.0
 offset_top = 16.0
 offset_right = 379.0
 offset_bottom = 53.0
+theme = ExtResource("4_1qt2t")
+theme_override_font_sizes/font_size = 7
+item_count = 1
+item_0/text = "Nothing"
 
-[node name="Label" type="Label" parent="SpeakUI"]
+[node name="Name" type="Label" parent="SpeakUI"]
 layout_mode = 0
 offset_left = 307.0
 offset_top = 3.0
@@ -275,9 +279,15 @@ offset_left = -28.0
 offset_top = -119.0
 offset_right = 29.0
 offset_bottom = -109.0
+size_flags_horizontal = 6
+size_flags_vertical = 2
 theme = ExtResource("4_1qt2t")
 text = "Item received:"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="pressed" from="SpeakUI/Button" to="SpeakUI" method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

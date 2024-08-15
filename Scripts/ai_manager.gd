@@ -3,23 +3,27 @@ extends Control
 signal new_response(text: String, friendship: int, inventory: Array)
 
 @onready var http_request = $HTTPRequest
+@export var npc_name: String = ""
 @export_multiline var character: String = ""
 @export var friendship = 50
-@export var inventory = ["cans"]
+@export var inventory = []
 @export var has_friendship = true
 @export var has_inventory = true
+@export var player: CharacterBody2D
 var history = []
+var give = ""
 
 
-func add_message(text: String, give = []):
+func add_message(text: String, give_new = []):
 	var obj = load("res://Scripts/history_part.gd").new(text)
 	history.append(obj)
-	continue_chat(give)
+	give = give_new
+	continue_chat()
 
-func continue_chat(give):
+func continue_chat():
 	print("Sending request")
-	var prompt = "Let's play a prison role playing game where we both are imates."
-	prompt += character
+	var prompt = "Let's play a prison role playing game where we both are imates. You are "
+	prompt += npc_name + character
 	if has_friendship:
 		prompt += "Together with the text from me you'll receive a friendship score on a scale of 0-100 where 100 is love and 0 is enemie you can change the score based on our conversation, but always return the score. And the longer the conversation is the less the score changes."
 	if has_inventory:
@@ -72,7 +76,10 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		var model_string = JSON.parse_string(JSON.parse_string(model_text))
 		var model_message = model_string["message"]
 		friendship = model_string["friendship"]
-		inventory = model_string["inventory"]
+		if inventory != model_string["inventory"]:
+			if inventory.size() <= model_string["inventory"]:
+				# To-Do
+				pass
 		var model_message_object = load("res://Scripts/history_part.gd").new(model_message, "model")
 		history.append(model_message_object)
 		emit_signal("new_response", model_message, friendship, inventory)

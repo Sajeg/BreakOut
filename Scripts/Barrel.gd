@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 @export var looted = false
-@export var loot_overwrite: String
+@export var loot_overwrite: String = ""
 
 func _ready():
 	if looted:
