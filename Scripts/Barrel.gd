@@ -1,14 +1,7 @@
 extends StaticBody2D
 
-enum Mode {
-	LEFT,
-	CENTER,
-	RIGHT
-}
-
 @export var looted = false
 @export var loot_overwrite: String = ""
-@export var display_mode = Mode.CENTER
 
 
 func _ready():
@@ -20,12 +13,7 @@ func _ready():
 		$Barrel_empty.visible = false
 
 func toggle_visible(state):
-	if display_mode == Mode.LEFT:
-		$Label_left.visible = state
-	elif display_mode == Mode.CENTER:
-		$Label_center.visible = state
-	elif display_mode == Mode.RIGHT:
-		$Label_right.visible = state
+	$Label.visible = state
 
 func can_loot():
 	return !looted

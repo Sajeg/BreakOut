@@ -18,9 +18,9 @@ func _on_button_pressed():
 	$Input.text = ""
 
 
-func _on_ai_manager_new_response(text, _friendship, _inventory):
+func _on_ai_manager_new_response(_text, _friendship, _inventory):
 	player.update_inventory_list()
-	$Output.text = text
+# 	$Output.text = text
 	#$Friendship.text = "friendship: " + str(friendship)
 	#$NPCInventory.text = "NPC inventory: " + str(inventory)
 

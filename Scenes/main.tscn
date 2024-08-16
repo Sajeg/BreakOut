@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xumfropcot62"]
+[gd_scene load_steps=19 format=3 uid="uid://xumfropcot62"]
 
 [ext_resource type="Texture2D" uid="uid://bflkw4mk2m25q" path="res://Assets/Tiles.png" id="1_din52"]
 [ext_resource type="Texture2D" uid="uid://b4vypwhaqy2cc" path="res://Assets/Props.png" id="2_bi2rq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://brlxmq7i4pe3q" path="res://Assets/void.png" id="3_d8yfx"]
 [ext_resource type="Theme" uid="uid://cpwjiok04og8e" path="res://Assets/theme.tres" id="4_7m6mf"]
 [ext_resource type="PackedScene" uid="uid://csd6ikilylmnc" path="res://Scenes/wizard.tscn" id="4_gi0r6"]
+[ext_resource type="Script" path="res://Scripts/Guide.gd" id="5_b7ms5"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="6_tdxaa"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="8_e8xbr"]
 [ext_resource type="PackedScene" uid="uid://d2lak8edkc10o" path="res://Scenes/Levels/level_1.tscn" id="9_ofqnt"]
@@ -1610,6 +1611,18 @@ sources/0 = SubResource("TileSetAtlasSource_47fml")
 sources/1 = SubResource("TileSetAtlasSource_iv67n")
 sources/3 = SubResource("TileSetAtlasSource_w7w07")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpmyv"]
+size = Vector2(127.5, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rm47l"]
+size = Vector2(129, 47)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ofm65"]
+radius = 43.1856
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1eush"]
+size = Vector2(110, 89)
+
 [node name="Main" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -1632,6 +1645,7 @@ layer_2/name = "Decorations"
 layer_2/tile_data = PackedInt32Array(917517, 196608, 19, 786445, 262144, 18, 393219, 589825, 1, 327683, 589825, 0, 720899, 65537, 2)
 
 [node name="Guide0" type="Label" parent="."]
+visible = false
 offset_left = 42.0
 offset_top = 125.0
 offset_right = 105.0
@@ -1639,8 +1653,18 @@ offset_bottom = 133.0
 theme = ExtResource("4_7m6mf")
 theme_override_font_sizes/font_size = 6
 text = "Welcome to BreakOut"
+script = ExtResource("5_b7ms5")
+
+[node name="Guide0Area" type="Area2D" parent="Guide0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide0/Guide0Area"]
+position = Vector2(56.25, 15.5)
+shape = SubResource("RectangleShape2D_wpmyv")
 
 [node name="Guide1" type="Label" parent="."]
+visible = false
 offset_left = 61.0
 offset_top = 158.0
 offset_right = 135.0
@@ -1651,7 +1675,16 @@ theme_override_font_sizes/font_size = 6
 text = "Your goal is to find a 
 loophole out of this place"
 
+[node name="Guide1Area" type="Area2D" parent="Guide1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide1/Guide1Area"]
+position = Vector2(37.5, 22.5)
+shape = SubResource("RectangleShape2D_rm47l")
+
 [node name="Guide2" type="Label" parent="."]
+visible = false
 offset_left = 144.0
 offset_top = 186.0
 offset_right = 190.0
@@ -1662,7 +1695,16 @@ theme_override_font_sizes/font_size = 6
 text = "Press E to 
 loot this Barrel"
 
+[node name="Guide2Area" type="Area2D" parent="Guide2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide2/Guide2Area"]
+position = Vector2(14, -13)
+shape = SubResource("CircleShape2D_ofm65")
+
 [node name="Guide3" type="Label" parent="."]
+visible = false
 offset_left = 190.0
 offset_top = 212.0
 offset_right = 242.0
@@ -1673,27 +1715,48 @@ theme_override_font_sizes/font_size = 6
 text = "And then E
 to speak with him"
 
-[node name="Wizard" parent="." instance=ExtResource("4_gi0r6")]
-position = Vector2(230, 220)
+[node name="Guide3Area" type="Area2D" parent="Guide3"]
+collision_layer = 2
+collision_mask = 2
 
-[node name="AIManager" parent="Wizard" index="4" node_paths=PackedStringArray("player")]
-character = "a friendly wizard. Your task is to keep the Dungeon clean. However you don't have a broom and you desperately want one. You'll reward the person who gives you a broom."
-inventory = ["Key"]
-player = NodePath("../../Player")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide3/Guide3Area"]
+position = Vector2(23, 27.5)
+shape = SubResource("RectangleShape2D_1eush")
 
 [node name="Barrel" parent="." instance=ExtResource("6_tdxaa")]
-position = Vector2(183, 174)
+position = Vector2(181, 172)
 loot_overwrite = "Broom"
-display_mode = 0
 
 [node name="Door" parent="." instance=ExtResource("8_e8xbr")]
 position = Vector2(176, 88)
 next_scene = ExtResource("9_ofqnt")
 
+[node name="Wizard" parent="." instance=ExtResource("4_gi0r6")]
+position = Vector2(230, 220)
+
+[node name="AIManager" parent="Wizard" index="5" node_paths=PackedStringArray("player")]
+character = "a friendly wizard. Your task is to keep the Dungeon clean. However you don't have a broom and you desperately want one. You'll reward the person who gives you a broom."
+inventory = ["Key"]
+player = NodePath("../../Player")
+
+[node name="Output" parent="Wizard" index="7"]
+offset_left = -143.0
+offset_top = -117.0
+offset_right = -11.0
+offset_bottom = -19.0
+
 [node name="Player" parent="." instance=ExtResource("2_nuvfg")]
 position = Vector2(67, 153)
 motion_mode = 1
 
+[connection signal="area_entered" from="Guide0/Guide0Area" to="Guide0" method="_on_guide_0_area_area_entered"]
+[connection signal="area_exited" from="Guide0/Guide0Area" to="Guide0" method="_on_guide_0_area_area_exited"]
+[connection signal="area_entered" from="Guide1/Guide1Area" to="Guide0" method="_on_guide_1_area_area_entered"]
+[connection signal="area_exited" from="Guide1/Guide1Area" to="Guide0" method="_on_guide_1_area_area_exited"]
+[connection signal="area_entered" from="Guide2/Guide2Area" to="Guide0" method="_on_guide_2_area_area_entered"]
+[connection signal="area_exited" from="Guide2/Guide2Area" to="Guide0" method="_on_guide_2_area_area_exited"]
+[connection signal="area_entered" from="Guide3/Guide3Area" to="Guide0" method="_on_guide_3_area_area_entered"]
+[connection signal="area_exited" from="Guide3/Guide3Area" to="Guide0" method="_on_guide_3_area_area_exited"]
 [connection signal="new_response" from="Wizard/AIManager" to="Player/SpeakUI" method="_on_ai_manager_new_response"]
 
 [editable path="Wizard"]

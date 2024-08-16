@@ -63,11 +63,9 @@ position = Vector2(345, 203)
 
 [node name="Barrel4" parent="." instance=ExtResource("5_tsxju")]
 position = Vector2(59, 248)
-display_mode = 2
 
 [node name="Barrel5" parent="." instance=ExtResource("5_tsxju")]
 position = Vector2(150, 273)
-display_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("2_85gcu")]
 position = Vector2(97, 278)

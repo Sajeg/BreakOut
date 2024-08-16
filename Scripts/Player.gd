@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var animPlayer = get_node("AnimationPlayer")
 
 
-var speed = 150
+var speed = 120
 var can_speak = false
 var ai_node
 var is_speaking = false
@@ -56,14 +56,14 @@ func _input(event):
 		if not is_speaking:
 			ai_node.get_parent().get_node("./Label").visible = false
 			$SpeakUI.visible = true
-			$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
+			$SpeakUI/Inventory/Name.text = "Give to " + ai_node.npc_name + ":"
 			update_inventory_list()
 			is_speaking = true
 	elif event.is_action_pressed("exit") && can_speak:
 		if is_speaking:
 			ai_node.get_parent().get_node("./Label").visible = true
 			$SpeakUI.visible = false
-			$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
+			$SpeakUI/Inventory/Name.text = "Give to " + ai_node.npc_name + ":"
 			is_speaking = false
 	
 
