@@ -277,14 +277,15 @@ text = "Submit"
 
 [node name="InventoryNotification" type="Label" parent="."]
 visible = false
-offset_left = -28.0
-offset_top = -119.0
-offset_right = 29.0
-offset_bottom = -109.0
+offset_left = -77.0
+offset_top = -43.0
+offset_right = 77.0
+offset_bottom = -32.0
 size_flags_horizontal = 6
 size_flags_vertical = 2
 theme = ExtResource("4_1qt2t")
-text = "Item received:"
+text = "Potatoe"
+horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

@@ -41,29 +41,27 @@ func _input(event):
 		else:
 			loot_node.set_looted()
 			add_to_inventory(vars.available_loot[randi() % vars.available_loot.size()])
-		loot_node.get_node("./Label").visible = false
+		loot_node.toggle_visible(false)
 	elif event.is_action_pressed("interact") && can_unlock:
 		if unlock_node.locked:
 			if "Key" in vars.inventory:
-				vars.inventory.erase("key")
+				vars.inventory.erase("Key")
 				unlock_node.unlock()
-				unlock_node.set_text("Press E to go to next room")
+				unlock_node.set_text("Go to \nnext \n room")
 			else:
-				$InventoryNotification.text = "No Key in inventory"
-				$InventoryNotification.visible = true
-				$Timer.start()
+				unlock_node.set_text("No\nKey")
 		else:
 			get_tree().change_scene_to_packed(unlock_node.next_scene)
 	elif event.is_action_pressed("interact") && can_speak:
 		if not is_speaking:
-			tooltip.visible = false
+			ai_node.get_parent().get_node("./Label").visible = false
 			$SpeakUI.visible = true
 			$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
 			update_inventory_list()
 			is_speaking = true
 	elif event.is_action_pressed("exit") && can_speak:
 		if is_speaking:
-			tooltip.visible = true
+			ai_node.get_parent().get_node("./Label").visible = true
 			$SpeakUI.visible = false
 			$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
 			is_speaking = false
@@ -77,37 +75,37 @@ func update_inventory_list():
 
 func add_to_inventory(item):
 	vars.inventory.append(item)
-	$InventoryNotification.text = "New Item received: " + item
+	$InventoryNotification.text = item
 	$InventoryNotification.visible = true
 	$Timer.start()
 
 func _on_area_2d_area_entered(area):
 	if area.name == "Wizard":
 		ai_node = area.get_parent().get_node("./AIManager")
-		tooltip.visible = true
-		tooltip.text = "Press E to speak"
+		area.get_parent().get_node("./Label").visible = true
 		can_speak = true
 	elif area.name == "Object":
 		loot_node = area.get_parent()
 		can_loot = loot_node.can_loot()
 		if can_loot:
-			loot_node.get_node("./Label").visible = true
+			loot_node.toggle_visible(true)
 	elif area.name == "Door":
 		unlock_node = area.get_parent()
 		can_unlock = true
 		unlock_node.text_visible(true)
 		if unlock_node.locked:
-			unlock_node.set_text("Press E to unlock the door")
+			unlock_node.set_text("Door is \nlocked")
 		else:
-			unlock_node.set_text("Press E to go to next room")
+			unlock_node.set_text("Go to \nnext \n room")
 
 
 func _on_area_2d_area_exited(area):
 	if area.name == "Wizard":
 		can_speak = false
+		area.get_parent().get_node("./Label").visible = false
 	elif area.name == "Object":
 		can_loot = false
-		loot_node.get_node("./Label").visible = false
+		loot_node.toggle_visible(false)
 	elif area.name == "Door":
 		can_unlock = false
 		unlock_node.text_visible(false)

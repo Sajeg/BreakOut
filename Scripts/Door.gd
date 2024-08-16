@@ -6,10 +6,10 @@ extends StaticBody2D
 
 func _ready():
 	if !locked:
-		visible = false
+		$Sprite2D.visible = false
 
 func unlock():
-	visible = false
+	$Sprite2D.visible = false
 	locked = false
 
 func text_visible(state):

@@ -1652,10 +1652,10 @@ text = "Your goal is to find a
 loophole out of this place"
 
 [node name="Guide2" type="Label" parent="."]
-offset_left = 143.0
-offset_top = 179.0
-offset_right = 189.0
-offset_bottom = 195.0
+offset_left = 144.0
+offset_top = 186.0
+offset_right = 190.0
+offset_bottom = 202.0
 theme = ExtResource("4_7m6mf")
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 6
