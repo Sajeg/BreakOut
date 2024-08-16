@@ -3,10 +3,10 @@ extends CharacterBody2D
 @onready var tooltip = get_node("tooltip")
 @onready var animPlayer = get_node("AnimationPlayer")
 
-@export var ai: Control
 
 var speed = 150
 var can_speak = false
+var ai_node
 var is_speaking = false
 var can_loot = false
 var loot_node
@@ -58,14 +58,14 @@ func _input(event):
 		if not is_speaking:
 			tooltip.visible = false
 			$SpeakUI.visible = true
-			$SpeakUI/Name.text = "Give to " + ai.npc_name + ":"
+			$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
 			update_inventory_list()
 			is_speaking = true
 	elif event.is_action_pressed("exit") && can_speak:
 		if is_speaking:
 			tooltip.visible = true
 			$SpeakUI.visible = false
-			$SpeakUI/Name.text = "Give to " + ai.npc_name + ":"
+			$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
 			is_speaking = false
 	
 
@@ -83,6 +83,7 @@ func add_to_inventory(item):
 
 func _on_area_2d_area_entered(area):
 	if area.name == "Wizard":
+		ai_node = area.get_parent().get_node("./AIManager")
 		tooltip.visible = true
 		tooltip.text = "Press E to speak"
 		can_speak = true

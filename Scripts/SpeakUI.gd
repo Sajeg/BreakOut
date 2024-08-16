@@ -5,11 +5,11 @@ var selected_items = []
 
 func _on_button_pressed():
 	if selected_items == ["Nothing"]:
-		player.ai.add_message($Input.text)
+		player.ai_node.add_message($Input.text)
 	elif selected_items == []:
-		player.ai.add_message($Input.text)
+		player.ai_node.add_message($Input.text)
 	else:
-		player.ai.add_message($Input.text, selected_items)
+		player.ai_node.add_message($Input.text, selected_items)
 		var index = player.inventory.find(selected_items[0])
 		if index != -1:
 			player.inventory.erase(selected_items[0])

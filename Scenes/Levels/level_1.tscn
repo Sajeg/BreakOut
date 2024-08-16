@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2lak8edkc10o"]
+[gd_scene load_steps=7 format=3 uid="uid://d2lak8edkc10o"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_4q7nd"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="2_85gcu"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="3_4btgj"]
+[ext_resource type="PackedScene" uid="uid://bpltripjs3xor" path="res://Scenes/Levels/level_1.5.tscn" id="3_pahdj"]
 [ext_resource type="PackedScene" uid="uid://csd6ikilylmnc" path="res://Scenes/wizard.tscn" id="4_a630y"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="5_tsxju"]
 
@@ -32,13 +33,24 @@ position = Vector2(161, 104)
 
 [node name="Door2" parent="." instance=ExtResource("3_4btgj")]
 position = Vector2(241, 104)
+next_scene = ExtResource("3_pahdj")
 locked = false
 
 [node name="Wizard" parent="." instance=ExtResource("4_a630y")]
 position = Vector2(441, 315)
 
+[node name="AIManager" parent="Wizard" index="4" node_paths=PackedStringArray("player")]
+npc_name = "Fred"
+character = "You are a bit stupid, confused and only speak gibberish"
+has_friendship = false
+has_inventory = false
+player = NodePath("../../Player")
+
 [node name="Wizard2" parent="." instance=ExtResource("4_a630y")]
 position = Vector2(383, 145)
+
+[node name="AIManager" parent="Wizard2" index="4" node_paths=PackedStringArray("player")]
+player = NodePath("../../Player")
 
 [node name="Barrel" parent="." instance=ExtResource("5_tsxju")]
 position = Vector2(214, 224)
@@ -57,3 +69,10 @@ position = Vector2(150, 273)
 
 [node name="Player" parent="." instance=ExtResource("2_85gcu")]
 position = Vector2(97, 278)
+
+[connection signal="new_response" from="Wizard/AIManager" to="Player/SpeakUI" method="_on_ai_manager_new_response"]
+[connection signal="new_response" from="Wizard2/AIManager" to="Player/SpeakUI" method="_on_ai_manager_new_response"]
+
+[editable path="Wizard"]
+[editable path="Wizard2"]
+[editable path="Player"]

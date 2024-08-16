@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://xumfropcot62"]
+[gd_scene load_steps=14 format=3 uid="uid://xumfropcot62"]
 
 [ext_resource type="Texture2D" uid="uid://bflkw4mk2m25q" path="res://Assets/Tiles.png" id="1_din52"]
 [ext_resource type="Texture2D" uid="uid://b4vypwhaqy2cc" path="res://Assets/Props.png" id="2_bi2rq"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://brlxmq7i4pe3q" path="res://Assets/void.png" id="3_d8yfx"]
 [ext_resource type="Theme" uid="uid://cpwjiok04og8e" path="res://Assets/theme.tres" id="4_7m6mf"]
 [ext_resource type="PackedScene" uid="uid://csd6ikilylmnc" path="res://Scenes/wizard.tscn" id="4_gi0r6"]
-[ext_resource type="PackedScene" uid="uid://deg2j8cndure2" path="res://Scenes/ai_manager.tscn" id="4_rldry"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="6_tdxaa"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="8_e8xbr"]
 [ext_resource type="PackedScene" uid="uid://d2lak8edkc10o" path="res://Scenes/Levels/level_1.tscn" id="9_ofqnt"]
@@ -1677,12 +1676,7 @@ to speak with him"
 [node name="Wizard" parent="." instance=ExtResource("4_gi0r6")]
 position = Vector2(230, 220)
 
-[node name="AIManager" parent="Wizard" node_paths=PackedStringArray("player") instance=ExtResource("4_rldry")]
-offset_left = -179.0
-offset_top = -202.0
-offset_right = -179.0
-offset_bottom = -202.0
-npc_name = "Billy"
+[node name="AIManager" parent="Wizard" index="4" node_paths=PackedStringArray("player")]
 character = "a friendly wizard. Your task is to keep the Dungeon clean. However you don't have a broom and you desperately want one. You'll reward the person who gives you a broom."
 inventory = ["Key"]
 player = NodePath("../../Player")
@@ -1695,11 +1689,11 @@ loot_overwrite = "Broom"
 position = Vector2(176, 88)
 next_scene = ExtResource("9_ofqnt")
 
-[node name="Player" parent="." node_paths=PackedStringArray("ai") instance=ExtResource("2_nuvfg")]
+[node name="Player" parent="." instance=ExtResource("2_nuvfg")]
 position = Vector2(67, 153)
 motion_mode = 1
-ai = NodePath("../Wizard/AIManager")
 
 [connection signal="new_response" from="Wizard/AIManager" to="Player/SpeakUI" method="_on_ai_manager_new_response"]
 
+[editable path="Wizard"]
 [editable path="Player"]

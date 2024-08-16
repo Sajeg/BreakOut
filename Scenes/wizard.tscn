@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://csd6ikilylmnc"]
+[gd_scene load_steps=11 format=3 uid="uid://csd6ikilylmnc"]
 
 [ext_resource type="Texture2D" uid="uid://bkp4jrea1ejr0" path="res://Assets/Wizard/Idle-Sheet.png" id="1_1akyu"]
 [ext_resource type="Script" path="res://Scripts/wizard.gd" id="1_71ayd"]
 [ext_resource type="Texture2D" uid="uid://w7vvqpfixo5m" path="res://Assets/Wizard/Run-Sheet.png" id="2_eks4e"]
+[ext_resource type="PackedScene" uid="uid://deg2j8cndure2" path="res://Scenes/ai_manager.tscn" id="4_t3al8"]
 
 [sub_resource type="Animation" id="Animation_fh4qs"]
 length = 0.001
@@ -175,6 +176,8 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -26)
 shape = SubResource("RectangleShape2D_ti3ss")
+
+[node name="AIManager" parent="." instance=ExtResource("4_t3al8")]
 
 [node name="Wizard" type="Area2D" parent="."]
 collision_layer = 2

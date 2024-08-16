@@ -1,7 +1,7 @@
 extends Node
 
 var available_loot = [
-	"key", "cans", "potato"
+	"cans", "potato", "shoe", "bread", "iron", "bones", "dead rat", "gold"
 ]
 
 var inventory = []
