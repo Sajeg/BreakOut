@@ -187,6 +187,7 @@ shape = SubResource("CircleShape2D_ng2hl")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, -13)
 zoom = Vector2(3, 3)
+position_smoothing_enabled = true
 
 [node name="tooltip" type="Label" parent="."]
 visible = false

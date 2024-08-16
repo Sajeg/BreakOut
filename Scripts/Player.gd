@@ -3,7 +3,6 @@ extends CharacterBody2D
 @onready var tooltip = get_node("tooltip")
 @onready var animPlayer = get_node("AnimationPlayer")
 
-@export var inventory = []
 @export var ai: Control
 
 var speed = 150
@@ -45,10 +44,10 @@ func _input(event):
 		tooltip.visible = false
 	elif event.is_action_pressed("interact") && can_unlock:
 		if unlock_node.locked:
-			if "Key" in inventory:
-				inventory.erase("key")
+			if "Key" in vars.inventory:
+				vars.inventory.erase("key")
 				unlock_node.unlock()
-				tooltip.text = "Press E to go to next room"
+				unlock_node.set_text("Press E to go to next room")
 			else:
 				$InventoryNotification.text = "No Key in inventory"
 				$InventoryNotification.visible = true
@@ -73,11 +72,11 @@ func _input(event):
 func update_inventory_list():
 	$SpeakUI/Inventory.clear()
 	$SpeakUI/Inventory.add_item("Nothing")
-	for item in inventory:
+	for item in vars.inventory:
 		$SpeakUI/Inventory.add_item(item)
 
 func add_to_inventory(item):
-	inventory.append(item)
+	vars.inventory.append(item)
 	$InventoryNotification.text = "New Item received: " + item
 	$InventoryNotification.visible = true
 	$Timer.start()
@@ -96,11 +95,11 @@ func _on_area_2d_area_entered(area):
 	elif area.name == "Door":
 		unlock_node = area.get_parent()
 		can_unlock = true
-		tooltip.visible = true
+		unlock_node.text_visible(true)
 		if unlock_node.locked:
-			tooltip.text = "Press E to unlock the door"
+			unlock_node.set_text("Press E to unlock the door")
 		else:
-			tooltip.text = "Press E to go to next room"
+			unlock_node.set_text("Press E to go to next room")
 
 
 func _on_area_2d_area_exited(area):
@@ -110,6 +109,7 @@ func _on_area_2d_area_exited(area):
 		can_loot = false
 	elif area.name == "Door":
 		can_unlock = false
+		unlock_node.text_visible(false)
 	if !can_speak && !can_speak && !can_unlock:
 		tooltip.visible = false
 
