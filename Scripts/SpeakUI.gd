@@ -10,9 +10,9 @@ func _on_button_pressed():
 		player.ai_node.add_message($Input.text)
 	else:
 		player.ai_node.add_message($Input.text, selected_items)
-		var index = player.inventory.find(selected_items[0])
+		var index = vars.inventory.find(selected_items[0])
 		if index != -1:
-			player.inventory.erase(selected_items[0])
+			vars.inventory.erase(selected_items[0])
 		selected_items = []
 	
 	$Input.text = ""

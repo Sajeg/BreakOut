@@ -36,6 +36,7 @@ text = "Look to the left"
 [node name="Barrel" parent="." instance=ExtResource("3_uxkqg")]
 position = Vector2(277, 210)
 loot_overwrite = "Key"
+display_mode = 0
 
 [node name="Door" parent="." instance=ExtResource("4_ywidl")]
 position = Vector2(224, 136)

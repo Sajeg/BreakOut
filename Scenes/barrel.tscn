@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://vlj7bhi0c4gq"]
+[gd_scene load_steps=7 format=3 uid="uid://vlj7bhi0c4gq"]
 
 [ext_resource type="Script" path="res://Scripts/Barrel.gd" id="1_gykoh"]
+[ext_resource type="Theme" uid="uid://cpwjiok04og8e" path="res://Assets/theme.tres" id="2_jmrls"]
 [ext_resource type="Texture2D" uid="uid://dcf1okg51v23f" path="res://Assets/Props/Barrel.png" id="2_ni3nf"]
 [ext_resource type="Texture2D" uid="uid://bwouyhut5oj4h" path="res://Assets/Props/Barrel_empty.png" id="3_vxa6d"]
 
@@ -14,6 +15,16 @@ height = 38.0
 
 [node name="Barrel" type="StaticBody2D"]
 script = ExtResource("1_gykoh")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -18.0
+offset_right = 44.0
+offset_bottom = 15.0
+theme = ExtResource("2_jmrls")
+theme_override_constants/line_spacing = 1
+theme_override_font_sizes/font_size = 7
 
 [node name="Barrel" type="Sprite2D" parent="."]
 texture_filter = 1

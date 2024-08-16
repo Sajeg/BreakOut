@@ -10,10 +10,10 @@
 [node name="Level1" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -283.0
-offset_top = -173.0
-offset_right = 490.0
-offset_bottom = 508.0
+offset_left = -512.0
+offset_top = -348.0
+offset_right = 1260.0
+offset_bottom = 895.0
 color = Color(0.0781567, 0.0781567, 0.0703441, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -63,9 +63,11 @@ position = Vector2(345, 203)
 
 [node name="Barrel4" parent="." instance=ExtResource("5_tsxju")]
 position = Vector2(59, 248)
+display_mode = 2
 
 [node name="Barrel5" parent="." instance=ExtResource("5_tsxju")]
 position = Vector2(150, 273)
+display_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("2_85gcu")]
 position = Vector2(97, 278)
