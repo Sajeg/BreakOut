@@ -290,9 +290,6 @@ grow_vertical = 0
 theme = ExtResource("4_1qt2t")
 text = "Submit"
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, -20)
-
 [connection signal="area_entered" from="Player" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Player" to="." method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
