@@ -47,7 +47,6 @@ func _physics_process(delta):
 
 
 func create_path():
-	print(player.global_position)
 	nav_agent.target_position = player.global_position
 	if player.global_position.x < global_position.x:
 		$"Run-sheet".flip_h = true
