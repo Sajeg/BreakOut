@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://xumfropcot62"]
+[gd_scene load_steps=18 format=3 uid="uid://xumfropcot62"]
 
 [ext_resource type="Texture2D" uid="uid://bflkw4mk2m25q" path="res://Assets/Tiles.png" id="1_din52"]
 [ext_resource type="Texture2D" uid="uid://b4vypwhaqy2cc" path="res://Assets/Props.png" id="2_bi2rq"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://Scripts/Guide.gd" id="5_b7ms5"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="6_tdxaa"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="8_e8xbr"]
-[ext_resource type="PackedScene" uid="uid://d2lak8edkc10o" path="res://Scenes/Levels/level_1.tscn" id="8_k8ngb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fml"]
 texture = ExtResource("1_din52")
@@ -1728,7 +1727,6 @@ loot_overwrite = "Broom"
 
 [node name="Door" parent="." instance=ExtResource("8_e8xbr")]
 position = Vector2(176, 88)
-next_scene = ExtResource("8_k8ngb")
 
 [node name="Wizard" parent="." instance=ExtResource("4_gi0r6")]
 position = Vector2(230, 220)
