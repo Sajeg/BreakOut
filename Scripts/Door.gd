@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var next_scene: PackedScene
+@export var next_scene: String = "res://Scenes/main.tscn"
 
 @export var locked = true
 

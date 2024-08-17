@@ -4,10 +4,11 @@ extends CharacterBody2D
 
 @export var path_follow : PathFollow2D
 @export var player : CharacterBody2D
+@export var blind = false
 @export var h_flip_ratio_bigger = 0.5
 
-var speed = 40
-
+var speed = 15
+var follow_speed = 50
 
 var player_detected = false
 
@@ -23,11 +24,11 @@ func _physics_process(delta):
 	else:
 		$Skeleton/CollisionShape2D.position = Vector2(68, -17)
 		
-	if player_detected:
+	if player_detected && !blind:
 		var current_agent_position: Vector2 = global_position
 		var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	
-		velocity = current_agent_position.direction_to(next_path_position) * speed
+		velocity = current_agent_position.direction_to(next_path_position) * follow_speed
 		move_and_slide()
 	else:
 		path_follow.progress_ratio += (speed * delta) / 100

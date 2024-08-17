@@ -56,7 +56,8 @@ func _input(event):
 			else:
 				unlock_node.set_text("No\nKey")
 		else:
-			get_tree().change_scene_to_packed(unlock_node.next_scene)
+			var scene = load(unlock_node.next_scene)
+			get_tree().change_scene_to_packed(scene)
 	elif event.is_action_pressed("interact") && can_speak:
 		if not is_speaking:
 			ai_node.get_parent().get_node("./Label").visible = false

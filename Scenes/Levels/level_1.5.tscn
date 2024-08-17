@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpltripjs3xor"]
+[gd_scene load_steps=9 format=3 uid="uid://bpltripjs3xor"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_lx1t2"]
 [ext_resource type="Theme" uid="uid://cpwjiok04og8e" path="res://Assets/theme.tres" id="2_1al6g"]
 [ext_resource type="Script" path="res://Scripts/map.gd" id="2_akgu4"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="3_uxkqg"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="4_ywidl"]
-[ext_resource type="PackedScene" uid="uid://d2lak8edkc10o" path="res://Scenes/Levels/level_1.tscn" id="5_uu2wc"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="6_6gpd2"]
 [ext_resource type="PackedScene" uid="uid://bglg08apkdrh4" path="res://Scenes/skeleton.tscn" id="7_sgyde"]
 
@@ -50,7 +49,7 @@ loot_overwrite = "Key"
 
 [node name="Door" parent="." instance=ExtResource("4_ywidl")]
 position = Vector2(224, 136)
-next_scene = ExtResource("5_uu2wc")
+next_scene = "res://Scenes/Levels/level_1.tscn"
 locked = false
 
 [node name="Player" parent="." instance=ExtResource("6_6gpd2")]
@@ -62,10 +61,10 @@ curve = SubResource("Curve2D_vyujt")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(103, 273)
-rotation = -1.551
 progress = 286.0
 rotates = false
 
-[node name="Skeleton" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("path_follow") instance=ExtResource("7_sgyde")]
-rotation = 1.5708
+[node name="Skeleton" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("path_follow", "player") instance=ExtResource("7_sgyde")]
 path_follow = NodePath("..")
+player = NodePath("../../../Player")
+blind = true

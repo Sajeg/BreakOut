@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2lak8edkc10o"]
+[gd_scene load_steps=7 format=3 uid="uid://d2lak8edkc10o"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_4q7nd"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="2_85gcu"]
 [ext_resource type="Script" path="res://Scripts/map.gd" id="2_ovet6"]
-[ext_resource type="PackedScene" uid="uid://bpltripjs3xor" path="res://Scenes/Levels/level_1.5.tscn" id="3_2ebw1"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="3_4btgj"]
-[ext_resource type="PackedScene" uid="uid://bsgeesruw3hys" path="res://Scenes/Levels/level_2.tscn" id="3_8y55a"]
 [ext_resource type="PackedScene" uid="uid://csd6ikilylmnc" path="res://Scenes/wizard.tscn" id="4_a630y"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="5_tsxju"]
 
@@ -33,11 +31,11 @@ script = ExtResource("2_ovet6")
 
 [node name="Door" parent="." instance=ExtResource("3_4btgj")]
 position = Vector2(161, 104)
-next_scene = ExtResource("3_8y55a")
+next_scene = "res://Scenes/Levels/level_2.tscn"
 
 [node name="Door2" parent="." instance=ExtResource("3_4btgj")]
 position = Vector2(241, 104)
-next_scene = ExtResource("3_2ebw1")
+next_scene = "res://Scenes/Levels/level_1.5.tscn"
 locked = false
 
 [node name="Wizard" parent="." instance=ExtResource("4_a630y")]

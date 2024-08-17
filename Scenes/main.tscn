@@ -1729,6 +1729,7 @@ loot_overwrite = "Broom"
 
 [node name="Door" parent="." instance=ExtResource("8_e8xbr")]
 position = Vector2(176, 88)
+next_scene = "res://Scenes/Levels/level_1.tscn"
 
 [node name="Wizard" parent="." instance=ExtResource("4_gi0r6")]
 position = Vector2(230, 220)
