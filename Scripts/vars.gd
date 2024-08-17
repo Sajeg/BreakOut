@@ -4,4 +4,5 @@ var available_loot = [
 	"cans", "potato", "shoe", "bread", "iron", "bones", "dead rat", "gold"
 ]
 
-var inventory = []
+# For Debug purpose I have many Keys
+var inventory = ["Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key"]
