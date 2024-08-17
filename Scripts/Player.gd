@@ -34,6 +34,11 @@ func process_input(_delta):
 		animPlayer.play("walk")
 
 func _input(event):
+	if event.is_action("zoom in"):
+		$Camera2D.zoom += Vector2(0.1,0.1)
+	elif event.is_action("zoom out"):
+		$Camera2D.zoom -= Vector2(0.1,0.1)
+			
 	if event.is_action_pressed("interact") && can_loot:
 		if loot_node.loot_overwrite != "":
 			loot_node.set_looted()
@@ -47,7 +52,7 @@ func _input(event):
 			if "Key" in vars.inventory:
 				vars.inventory.erase("Key")
 				unlock_node.unlock()
-				unlock_node.set_text("Go to \nnext \n room")
+				unlock_node.set_text("Go to\nnext\nroom")
 			else:
 				unlock_node.set_text("No\nKey")
 		else:
@@ -55,15 +60,17 @@ func _input(event):
 	elif event.is_action_pressed("interact") && can_speak:
 		if not is_speaking:
 			ai_node.get_parent().get_node("./Label").visible = false
+			ai_node.get_parent().get_node("./Output").visible = true
 			$SpeakUI.visible = true
-			$SpeakUI/Inventory/Name.text = "Give to " + ai_node.npc_name + ":"
+			$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
 			update_inventory_list()
 			is_speaking = true
 	elif event.is_action_pressed("exit") && can_speak:
 		if is_speaking:
 			ai_node.get_parent().get_node("./Label").visible = true
+			ai_node.get_parent().get_node("./Output").visible = false
 			$SpeakUI.visible = false
-			$SpeakUI/Inventory/Name.text = "Give to " + ai_node.npc_name + ":"
+			$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
 			is_speaking = false
 	
 
@@ -115,3 +122,9 @@ func _on_area_2d_area_exited(area):
 
 func _on_timer_timeout():
 	$InventoryNotification.visible = false
+
+
+func _on_ai_manager_new_response(_text:String, _friendship:int, _inventory:Array):
+	update_inventory_list()
+	$SpeakUI.request_ongoing = false
+	

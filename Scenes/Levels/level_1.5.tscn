@@ -10,9 +10,11 @@
 [node name="Level1_5" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 461.0
-offset_bottom = 446.0
-color = Color(0.0784314, 0.0784314, 0.0705882, 1)
+offset_left = -23776.0
+offset_top = -15145.0
+offset_right = 24581.0
+offset_bottom = 16029.0
+color = Color(0.0781567, 0.0781567, 0.0703441, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1

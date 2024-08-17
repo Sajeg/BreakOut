@@ -6,3 +6,6 @@ func _ready():
 	
 func display_text(text):
 	$Output.text = text
+	
+func change_visible(state):
+	$Output.visible = state
