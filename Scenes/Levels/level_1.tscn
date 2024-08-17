@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2lak8edkc10o"]
+[gd_scene load_steps=9 format=3 uid="uid://d2lak8edkc10o"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_4q7nd"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="2_85gcu"]
+[ext_resource type="Script" path="res://Scripts/map.gd" id="2_ovet6"]
 [ext_resource type="PackedScene" uid="uid://bpltripjs3xor" path="res://Scenes/Levels/level_1.5.tscn" id="3_2ebw1"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="3_4btgj"]
+[ext_resource type="PackedScene" uid="uid://bsgeesruw3hys" path="res://Scenes/Levels/level_2.tscn" id="3_8y55a"]
 [ext_resource type="PackedScene" uid="uid://csd6ikilylmnc" path="res://Scenes/wizard.tscn" id="4_a630y"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="5_tsxju"]
 
@@ -27,9 +29,11 @@ layer_1/navigation_enabled = false
 layer_1/tile_data = PackedInt32Array(393219, 0, 0, 393220, 65536, 0, 393221, 65536, 0, 393222, 131072, 0, 393224, 0, 0, 393225, 0, 10, 393226, 65536, 10, 393227, 131072, 0, 393229, 0, 0, 393230, 0, 10, 393231, 65536, 10, 393232, 131072, 0, 393234, 0, 0, 393235, 65536, 0, 393236, 65536, 4, 393237, 131072, 0, 393239, 0, 0, 393240, 131072, 0, 655385, 0, 4, 655386, 65536, 0, 655387, 65536, 0, 655388, 65536, 0, 655389, 131072, 0, 393218, 196608, 5, 458754, 196608, 5, 524290, 196608, 5, 589826, 196608, 5, 655362, 196608, 5, 720898, 196608, 5, 786434, 196608, 5, 851970, 196608, 5, 327682, 196608, 4, 917506, 196608, 5, 983042, 196608, 5, 1048578, 196608, 5, 1114114, 196608, 5, 1114122, 262144, 5, 1048586, 262144, 5, 983050, 0, 3, 983051, 65536, 3, 983052, 65536, 3, 983053, 65536, 3, 983054, 65536, 3, 983055, 65536, 3, 983056, 131072, 3, 1048592, 196608, 5, 1114128, 196608, 5, 1179664, 196608, 5, 1179669, 0, 3, 1179670, 65536, 3, 1179671, 65536, 3, 1179672, 131072, 3, 1245209, 131072, 3, 1245208, 196608, 6, 1310745, 196608, 6, 1310746, 65536, 3, 1310747, 65536, 3, 1310748, 262144, 6, 1245212, 0, 3, 1179677, 0, 3, 1245213, 262144, 6, 1179678, 262144, 6, 1114142, 262144, 5, 1048606, 262144, 5, 983070, 262144, 5, 917534, 262144, 5, 851998, 262144, 5, 786462, 262144, 5, 720926, 262144, 5, 655390, 262144, 5, 589854, 262144, 4, 524313, 262144, 5, 458777, 262144, 5, 393241, 262144, 5, 327705, 262144, 4, 458759, 131072, 15, 458764, 196608, 1, 458769, 262144, 15, 458774, 196608, 1, 327687, 196608, 0, 327692, 196608, 0, 327697, 196608, 0, 327702, 196608, 0, 1245201, 65536, 3, 1245202, 65536, 3, 1245203, 65536, 3, 1245204, 65536, 3, 1179651, 65536, 3, 1179652, 65536, 3, 1179653, 65536, 3, 1179654, 65536, 3, 1179655, 65536, 3, 1179656, 65536, 3, 1179657, 65536, 3, 1179658, 262144, 6, 1179650, 196608, 6, 1245200, 196608, 6, 1245205, 262144, 6)
 layer_2/name = "Decorations"
 layer_2/tile_data = PackedInt32Array(851995, 393216, 19, 720923, 458752, 18, 786439, 524288, 12, 851975, 589824, 13, 851974, 524288, 13, 786440, 589824, 12, 524292, 196609, 2, 458755, 196609, 0, 524291, 131073, 2, 720910, 262145, 0, 720912, 851969, 1, 393221, 589825, 0, 458757, 589825, 1)
+script = ExtResource("2_ovet6")
 
 [node name="Door" parent="." instance=ExtResource("3_4btgj")]
 position = Vector2(161, 104)
+next_scene = ExtResource("3_8y55a")
 
 [node name="Door2" parent="." instance=ExtResource("3_4btgj")]
 position = Vector2(241, 104)
@@ -51,7 +55,7 @@ position = Vector2(383, 145)
 
 [node name="AIManager" parent="Wizard2" index="5" node_paths=PackedStringArray("player")]
 npc_name = "Fred"
-character = "You are a Wizard in a Dungeon and you love gold. You are also very smart and you try to warn me about the Knights in the Dungeon, but only do that if I give you gold. Except the knowledge you don't have anything to trade."
+character = "You are a Wizard in a Dungeon and you love gold. You are also very smart and you try to warn me about the Skeletons in the Dungeon, but only do that if I give you gold. Except the knowledge you don't have anything to trade. The Skeletons are invincible and when you come them too close who knows what will happen."
 player = NodePath("../../Player")
 
 [node name="Barrel" parent="." instance=ExtResource("5_tsxju")]

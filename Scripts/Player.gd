@@ -104,6 +104,8 @@ func _on_area_2d_area_entered(area):
 			unlock_node.set_text("Door is \nlocked")
 		else:
 			unlock_node.set_text("Go to \nnext \n room")
+	elif area.name == "Skeleton":
+		$RayCast2D.target_position = area.global_position
 
 
 func _on_area_2d_area_exited(area):

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpltripjs3xor"]
+[gd_scene load_steps=10 format=3 uid="uid://bpltripjs3xor"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_lx1t2"]
 [ext_resource type="Theme" uid="uid://cpwjiok04og8e" path="res://Assets/theme.tres" id="2_1al6g"]
+[ext_resource type="Script" path="res://Scripts/map.gd" id="2_akgu4"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="3_uxkqg"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="4_ywidl"]
-[ext_resource type="PackedScene" uid="uid://d2lak8edkc10o" path="res://Scenes/Levels/level_1.tscn" id="5_lr4cc"]
+[ext_resource type="PackedScene" uid="uid://d2lak8edkc10o" path="res://Scenes/Levels/level_1.tscn" id="5_uu2wc"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="6_6gpd2"]
 [ext_resource type="PackedScene" uid="uid://bglg08apkdrh4" path="res://Scenes/skeleton.tscn" id="7_sgyde"]
 
@@ -33,6 +34,7 @@ layer_1/name = "Walls"
 layer_1/tile_data = PackedInt32Array(524300, 0, 0, 524301, 65536, 0, 524302, 65536, 0, 524303, 65536, 0, 524304, 65536, 0, 524305, 131072, 0, 458763, 196608, 4, 458770, 262144, 4, 524306, 262144, 5, 589842, 262144, 5, 655378, 262144, 5, 720914, 262144, 5, 786450, 262144, 5, 851986, 262144, 5, 917522, 262144, 5, 524299, 196608, 5, 589835, 196608, 5, 655371, 196608, 5, 720907, 196608, 5, 786443, 196608, 5, 851979, 196608, 5, 917515, 196608, 5, 983051, 196608, 6, 983058, 262144, 6, 983057, 65536, 3, 983056, 65536, 3, 983055, 65536, 3, 983054, 65536, 3, 983053, 65536, 3, 983052, 65536, 3, 458756, 0, 0, 458757, 65536, 0, 458758, 65536, 4, 458759, 65536, 0, 393219, 196608, 4, 458755, 196608, 5, 524291, 196608, 5, 589827, 196608, 5, 655363, 196608, 5, 786435, 196608, 5, 851971, 196608, 5, 917507, 196608, 5, 983043, 196608, 5, 1114115, 196608, 5, 1048579, 196608, 5, 1179651, 196608, 5, 1245187, 196608, 6, 1245191, 65536, 3, 1245190, 65536, 3, 1245189, 65536, 3, 1245188, 65536, 3, 458760, 131072, 0, 720899, 196608, 5, 1245192, 65536, 3, 1245193, 262144, 6, 1179657, 262144, 5, 1114121, 262144, 5, 1048585, 262144, 5, 983049, 262144, 5, 917513, 262144, 5, 851977, 262144, 5, 786441, 262144, 5, 720905, 262144, 5, 655369, 262144, 5, 589833, 262144, 5, 524297, 262144, 5, 458761, 262144, 5, 393225, 262144, 4)
 layer_2/name = "Decorations"
 layer_2/tile_data = PackedInt32Array(524304, 589825, 0, 589840, 589825, 1, 524301, 0, 10, 524302, 65536, 10)
+script = ExtResource("2_akgu4")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 201.0
@@ -48,7 +50,7 @@ loot_overwrite = "Key"
 
 [node name="Door" parent="." instance=ExtResource("4_ywidl")]
 position = Vector2(224, 136)
-next_scene = ExtResource("5_lr4cc")
+next_scene = ExtResource("5_uu2wc")
 locked = false
 
 [node name="Player" parent="." instance=ExtResource("6_6gpd2")]

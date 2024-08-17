@@ -2,7 +2,6 @@ extends TileMap
 
 func _use_tile_data_runtime_update(layer, coords):
 	for node in get_node("../").get_children():
-		
 		if node is StaticBody2D:
 			print(node.position)
 			print(coords)
@@ -10,6 +9,8 @@ func _use_tile_data_runtime_update(layer, coords):
 			if  node_pos == coords:
 				print("Yes")
 				return true
+	if coords in get_used_cells_by_id(2):
+		return true
 	return false
 
 

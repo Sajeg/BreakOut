@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @onready var nav_agent = $NavigationAgent2D
-@export var cast : RayCast2D
 
 @export var path_follow : PathFollow2D
 @export var player : CharacterBody2D
@@ -16,23 +15,15 @@ func _ready():
 	$AnimationPlayer.play("run")
 	nav_agent.path_desired_distance = 4.0
 	nav_agent.target_desired_distance = 4.0
-# 	if path_follow == null:
-# 		return
-	call_deferred("actor_setup")
-    
-func actor_setup():
-	await get_tree().physics_frame
-	create_path()
-	
+
 	
 func _physics_process(delta):
-	if nav_agent.is_navigation_finished():
-		return
-	if path_follow == null:
-		return
+	if $"Run-sheet".flip_h:
+		$Skeleton/CollisionShape2D.position = Vector2(-68, -17)
+	else:
+		$Skeleton/CollisionShape2D.position = Vector2(68, -17)
 		
 	if player_detected:
-		cast.global_position = global_position
 		var current_agent_position: Vector2 = global_position
 		var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	

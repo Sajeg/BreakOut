@@ -5,9 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dcf1okg51v23f" path="res://Assets/Props/Barrel.png" id="2_ni3nf"]
 [ext_resource type="Texture2D" uid="uid://bwouyhut5oj4h" path="res://Assets/Props/Barrel_empty.png" id="3_vxa6d"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkp24"]
-radius = 8.0
-height = 22.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xt3bn"]
+size = Vector2(15, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0s5u5"]
 radius = 13.0
@@ -39,10 +38,11 @@ theme_override_font_sizes/font_size = 7
 text = "Loot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("CapsuleShape2D_qkp24")
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_xt3bn")
 
 [node name="Object" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
