@@ -12,12 +12,13 @@ var can_loot = false
 var loot_node
 var can_unlock = false
 var unlock_node
+var got_caught = false
 
 func _physics_process(delta):
 	process_input(delta)
 
 func process_input(_delta):
-	if is_speaking:
+	if is_speaking || got_caught:
 		return
 	velocity.x = (Input.get_action_strength("right") - Input.get_action_strength("left")) * speed
 	velocity.y = (Input.get_action_strength("down") - Input.get_action_strength("up")) * speed
@@ -74,7 +75,7 @@ func _input(event):
 			$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
 			is_speaking = false
 	
-
+	
 func update_inventory_list():
 	$SpeakUI/Inventory.clear()
 	$SpeakUI/Inventory.add_item("Nothing")
@@ -105,6 +106,14 @@ func _on_area_2d_area_entered(area):
 			unlock_node.set_text("Door is \nlocked")
 		else:
 			unlock_node.set_text("Go to \nnext \n room")
+	elif area.name == "SkeletonNear":
+		area.get_parent().get_node("./AnimationPlayer").stop()
+		got_caught = true
+		$AnimationPlayer.stop()
+		$Camera2D.zoom = Vector2(3,3)
+		$CaughtLabel.visible = true
+		$CaughtAnimation.play("end")
+		
 
 
 func _on_area_2d_area_exited(area):

@@ -45,9 +45,6 @@ loot_overwrite = "Keys"
 [node name="Door" parent="." instance=ExtResource("6_eisq6")]
 position = Vector2(240, 111)
 
-[node name="Player" parent="." instance=ExtResource("4_fyqvw")]
-position = Vector2(132, 212)
-
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_w248g")
 
@@ -60,3 +57,6 @@ rotates = false
 path_follow = NodePath("..")
 player = NodePath("../../../Player")
 h_flip_ratio_bigger = 0.46
+
+[node name="Player" parent="." instance=ExtResource("4_fyqvw")]
+position = Vector2(132, 212)
