@@ -1,0 +1,17 @@
+extends TileMap
+
+func _use_tile_data_runtime_update(layer, coords):
+	for node in get_node("../").get_children():
+		
+		if node is StaticBody2D:
+			print(node.position)
+			print(coords)
+			var node_pos = local_to_map(node.position)
+			if  node_pos == coords:
+				print("Yes")
+				return true
+	return false
+
+
+func _tile_data_runtime_update(layer, coords, tile_data):
+	tile_data.set_navigation_polygon(0, null)
