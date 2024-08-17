@@ -11,4 +11,14 @@ export_presets.cfg
 
 config.cfg
 
-./.idea
+/.idea
+/Scripts/.idea/.gitignore
+/.idea/.gitignore
+/.idea/encodings.xml
+/Scripts/.idea/encodings.xml
+/Folder.DotSettings.user
+/.idea/indexLayout.xml
+/Scripts/.idea/indexLayout.xml
+/.idea/libraries/GdSdk_4_2_2.xml
+/.idea/vcs.xml
+/Scripts/.idea/vcs.xml

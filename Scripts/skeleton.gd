@@ -1,21 +1,61 @@
-extends Node2D
+extends CharacterBody2D
 
+@onready var nav_agent = $NavigationAgent2D
 @export var path_follow : PathFollow2D
-var speed = 30
-@export var h_flip_ratio_smaller = 0.0
+@export var player: CharacterBody2D
 @export var h_flip_ratio_bigger = 0.5
 
+var speed = 40
+
+
+var player_detected = false
+
 func _ready():
-	if path_follow == null:
-		return
 	$AnimationPlayer.play("run")
+	nav_agent.path_desired_distance = 4.0
+	nav_agent.target_desired_distance = 4.0
+# 	if path_follow == null:
+# 		return
+	call_deferred("actor_setup")
+    
+func actor_setup():
+	await get_tree().physics_frame
+	create_path()
 	
 	
-func _process(delta):
-	if path_follow == null:
+func _physics_process(delta):
+	if nav_agent.is_navigation_finished():
 		return
-	path_follow.progress_ratio += (speed * delta) / 100
-	if path_follow.progress_ratio > h_flip_ratio_bigger:
-		$"Run-sheet".flip_h = false
-	else:
-		$"Run-sheet".flip_h = true
+# 	if path_follow == null:
+# 		return
+		
+# 	if player_detected:
+	var current_agent_position: Vector2 = global_position
+	var next_path_position: Vector2 = nav_agent.get_next_path_position()
+
+	velocity = current_agent_position.direction_to(next_path_position) * speed
+	move_and_slide()
+	print("Moving")
+# 	else:
+# 		path_follow.progress_ratio += (speed * delta) / 100
+# 		if path_follow.progress_ratio > h_flip_ratio_bigger:
+# 			$"Run-sheet".flip_h = false
+# 		else:
+# 			$"Run-sheet".flip_h = true
+
+
+func create_path():
+	print("Creating Path")
+	nav_agent.target_position = player.global_position
+
+func _on_area_2d_area_entered(area:Area2D):
+# 	if area.name == "Player":
+# 		player_detected = true
+# 		$Timer.start()
+	pass
+	
+
+
+func _on_timer_timeout():
+	create_path()
+	$Timer.start()

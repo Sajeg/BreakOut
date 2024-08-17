@@ -22,7 +22,6 @@ vars="*res://Scripts/vars.gd"
 
 [display]
 
-window/size/mode=3
 window/size/resizable=false
 
 [input]
