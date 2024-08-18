@@ -6,9 +6,9 @@ extends CharacterBody2D
 @export var player : CharacterBody2D
 @export var blind = false
 @export var h_flip_ratio_bigger = 0.5
+@export var speed = 15
 
-var speed = 15
-var follow_speed = 80
+var follow_speed = 120
 
 var player_detected = false
 
