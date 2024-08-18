@@ -30,7 +30,7 @@ layer_2/tile_data = PackedInt32Array(851995, 393216, 19, 720923, 458752, 18, 786
 script = ExtResource("2_ovet6")
 
 [node name="Door" parent="." instance=ExtResource("3_4btgj")]
-position = Vector2(161, 104)
+position = Vector2(160, 104)
 next_scene = "res://Scenes/Levels/level_2.tscn"
 
 [node name="Door2" parent="." instance=ExtResource("3_4btgj")]

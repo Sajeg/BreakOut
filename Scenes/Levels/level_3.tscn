@@ -43,7 +43,7 @@ script = ExtResource("2_w1j0f")
 [node name="Barrels" type="Node2D" parent="."]
 
 [node name="Barrel" parent="Barrels" instance=ExtResource("3_ftkjf")]
-position = Vector2(498, 161)
+position = Vector2(631, 206)
 loot_overwrite = "Key"
 id = 12
 

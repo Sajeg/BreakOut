@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var level: int
+@export var lever: StaticBody2D
 
 @onready var tooltip = get_node("tooltip")
 @onready var animPlayer = get_node("AnimationPlayer")
@@ -93,6 +94,9 @@ func update_inventory_list():
 		$SpeakUI/Inventory.add_item(item)
 
 func add_to_inventory(item):
+	if item == "spikes_down":
+		vars.spikes = false
+		lever.set_state(false)
 	vars.inventory.append(item)
 	$InventoryNotification.text = item
 	$InventoryNotification.visible = true

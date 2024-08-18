@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpqk5atfghdg1"]
+[gd_scene load_steps=12 format=3 uid="uid://dpqk5atfghdg1"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_63pwf"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="2_j86fu"]
 [ext_resource type="Script" path="res://Scripts/map.gd" id="2_kbp8y"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="4_0xs05"]
 [ext_resource type="PackedScene" uid="uid://byedh3yfj8frs" path="res://Scenes/spikes.tscn" id="4_mhubk"]
+[ext_resource type="Texture2D" uid="uid://cnrahxa7l1kg6" path="res://Assets/skeleton/king-idle.png" id="6_354lc"]
+[ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="6_aahme"]
+[ext_resource type="Texture2D" uid="uid://bipgevhclcx6r" path="res://Assets/skeleton/Idle-Sheet.png" id="7_mkdr2"]
+[ext_resource type="Texture2D" uid="uid://clus8nhfwom6x" path="res://Assets/skeleton/Death-Sheet.png" id="9_3qjqb"]
+[ext_resource type="Texture2D" uid="uid://ceblmyxtr6wii" path="res://Assets/skeleton/Hands.png" id="10_mcqcb"]
+[ext_resource type="Texture2D" uid="uid://btitahw6hkvs7" path="res://Assets/skeleton/wand.png" id="10_ynmav"]
 
 [node name="level_3_3" type="Node2D"]
 
@@ -46,6 +52,55 @@ position = Vector2(336, 328)
 next_scene = "res://Scenes/Levels/level_3.tscn"
 locked = false
 
+[node name="Barrel" parent="." instance=ExtResource("6_aahme")]
+position = Vector2(302, 345)
+id = 18
+
+[node name="Scene" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scene"]
+
+[node name="King" type="Sprite2D" parent="Scene"]
+texture_filter = 1
+position = Vector2(358, 250)
+texture = ExtResource("6_354lc")
+hframes = 4
+
+[node name="Death" type="Sprite2D" parent="Scene"]
+visible = false
+texture_filter = 1
+position = Vector2(414, 249)
+texture = ExtResource("9_3qjqb")
+flip_h = true
+hframes = 6
+
+[node name="Soldier1" type="Sprite2D" parent="Scene"]
+texture_filter = 1
+position = Vector2(389, 237)
+texture = ExtResource("7_mkdr2")
+flip_h = true
+hframes = 4
+
+[node name="Soldier2" type="Sprite2D" parent="Scene"]
+texture_filter = 1
+position = Vector2(396, 262)
+texture = ExtResource("7_mkdr2")
+flip_h = true
+hframes = 4
+
+[node name="Weapon" type="Node2D" parent="Scene"]
+position = Vector2(359, 260)
+
+[node name="Wand" type="Sprite2D" parent="Scene/Weapon"]
+texture_filter = 1
+position = Vector2(-2, -1)
+rotation = -1.5708
+texture = ExtResource("10_ynmav")
+
+[node name="Hands" type="Sprite2D" parent="Scene/Weapon"]
+texture_filter = 1
+texture = ExtResource("10_mcqcb")
+
 [node name="Player" parent="." instance=ExtResource("2_j86fu")]
-position = Vector2(425, 376)
+position = Vector2(335, 358)
 level = 7

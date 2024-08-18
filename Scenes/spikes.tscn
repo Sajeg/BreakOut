@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://3g4darl60c5j" path="res://Assets/Props/spikes.png" id="3_0vbmg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nrchb"]
-size = Vector2(16, 7)
+size = Vector2(16, 3)
 
 [node name="Spikes" type="StaticBody2D"]
 script = ExtResource("1_ic4wg")
@@ -20,5 +20,5 @@ position = Vector2(0, -4)
 texture = ExtResource("3_0vbmg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9.5)
+position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_nrchb")

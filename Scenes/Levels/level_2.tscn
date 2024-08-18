@@ -46,6 +46,7 @@ id = 7
 
 [node name="Door" parent="." instance=ExtResource("6_eisq6")]
 position = Vector2(240, 111)
+next_scene = "res://Scenes/Levels/level_3.tscn"
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_w248g")

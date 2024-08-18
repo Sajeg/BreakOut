@@ -47,13 +47,11 @@ func create_path():
 
 func _on_area_2d_area_entered(area:Area2D):
 	if area.name == "Player":
-		$RayCast2D.enabled = true
 		$RayCast2D.target_position = $RayCast2D.to_local(area.get_parent().global_position)
 		if !$RayCast2D.is_colliding():
 			player_detected = true
 			path_follow.rotation = 0
 			$Timer.start()
-		$RayCast2D.enabled = false
 	pass
 	
 

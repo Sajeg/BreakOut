@@ -12,4 +12,4 @@ var looted = []
 
 var last_position = []
 
-var spikes_active = false
+var spikes = true
