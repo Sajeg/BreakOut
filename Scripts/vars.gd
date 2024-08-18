@@ -11,3 +11,5 @@ var inventory = ["Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Ke
 var looted = []
 
 var last_position = []
+
+var spikes_active = false

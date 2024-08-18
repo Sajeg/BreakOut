@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn21otsi5lgeg"]
+[gd_scene load_steps=7 format=3 uid="uid://bn21otsi5lgeg"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_4gslb"]
+[ext_resource type="Script" path="res://Scripts/map.gd" id="2_8y60l"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="2_jvnps"]
 [ext_resource type="PackedScene" uid="uid://csd6ikilylmnc" path="res://Scenes/wizard.tscn" id="3_1hv1a"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="4_74pdr"]
@@ -25,6 +26,7 @@ layer_1/name = "Walls"
 layer_1/tile_data = PackedInt32Array(196619, 0, 0, 196620, 65536, 0, 196621, 65536, 0, 196622, 0, 10, 196623, 65536, 10, 196624, 65536, 0, 196625, 131072, 0, 131090, 262144, 4, 131082, 196608, 4, 655370, 196608, 6, 655378, 262144, 6, 196626, 262144, 5, 262162, 262144, 5, 327698, 262144, 5, 393234, 262144, 5, 458770, 262144, 5, 524306, 262144, 5, 589842, 262144, 5, 196618, 196608, 5, 262154, 196608, 5, 327690, 196608, 5, 393226, 196608, 5, 458762, 196608, 5, 524298, 196608, 5, 589834, 196608, 5, 655371, 65536, 3, 655372, 65536, 3, 655373, 65536, 3, 655374, 65536, 3, 655375, 65536, 3, 655376, 65536, 3, 655377, 65536, 3)
 layer_2/name = "Decoration"
 layer_2/tile_data = PackedInt32Array(196620, 589825, 0, 262156, 589825, 1, 262155, 65537, 2, 458765, 458752, 13, 458767, 589824, 11, 458766, 655360, 11)
+script = ExtResource("2_8y60l")
 
 [node name="Door" parent="." instance=ExtResource("2_jvnps")]
 position = Vector2(240, 56)

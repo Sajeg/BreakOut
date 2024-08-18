@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbiysoi0d3xc4"]
+[gd_scene load_steps=9 format=3 uid="uid://cbiysoi0d3xc4"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_3nmsw"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="2_pmpfh"]
+[ext_resource type="Script" path="res://Scripts/map.gd" id="2_w1j0f"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="3_ftkjf"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="4_4mmxm"]
 [ext_resource type="PackedScene" uid="uid://bglg08apkdrh4" path="res://Scenes/skeleton.tscn" id="4_e8hvf"]
@@ -37,11 +38,13 @@ layer_1/name = "Walls"
 layer_1/tile_data = PackedInt32Array(720912, 0, 0, 720913, 0, 10, 720914, 65536, 10, 720915, 65536, 0, 720916, 65536, 0, 720917, 131072, 0, 720919, 0, 0, 720920, 65536, 0, 720921, 65536, 0, 720922, 131072, 4, 524315, 0, 0, 524316, 0, 10, 524317, 65536, 10, 524318, 65536, 0, 524319, 65536, 0, 524320, 0, 10, 524321, 65536, 10, 524323, 65536, 0, 524324, 0, 10, 524325, 65536, 10, 524326, 131072, 0, 720935, 0, 4, 720936, 65536, 0, 720937, 65536, 0, 720938, 131072, 0, 720940, 0, 0, 720941, 65536, 4, 720942, 65536, 0, 720943, 65536, 0, 720944, 0, 10, 720945, 65536, 10, 720946, 131072, 0, 720911, 196608, 5, 786447, 196608, 5, 851983, 196608, 5, 983055, 196608, 5, 917519, 196608, 5, 1048591, 196608, 5, 1114127, 196608, 5, 1179663, 196608, 5, 1245199, 196608, 5, 1310735, 196608, 5, 655375, 196608, 4, 458791, 262144, 4, 458778, 196608, 4, 655411, 262144, 4, 720947, 262144, 5, 786483, 262144, 5, 852019, 262144, 5, 917555, 262144, 5, 983091, 262144, 5, 1048627, 262144, 5, 1114163, 262144, 5, 1179699, 262144, 5, 1245235, 262144, 5, 1310771, 262144, 5, 524327, 262144, 5, 589863, 262144, 5, 524314, 196608, 5, 589850, 196608, 5, 1376306, 65536, 3, 1376305, 65536, 3, 1376304, 0, 3, 1376297, 131072, 3, 1376296, 65536, 3, 1376295, 65536, 3, 1376294, 65536, 3, 1376293, 65536, 3, 1376292, 65536, 3, 1376291, 65536, 3, 1376290, 65536, 3, 1376289, 65536, 3, 1376288, 65536, 3, 1376287, 65536, 3, 1376286, 65536, 3, 1376285, 65536, 3, 1376284, 65536, 3, 1376283, 65536, 3, 1376282, 65536, 3, 1376281, 65536, 3, 1376280, 65536, 3, 1376279, 65536, 3, 1376278, 65536, 3, 1376277, 65536, 3, 1376276, 65536, 3, 1376275, 65536, 3, 1376272, 65536, 3, 1376273, 65536, 3, 1376274, 65536, 3, 2162730, 65536, 3, 2162731, 65536, 3, 2162732, 65536, 3, 2162733, 65536, 3, 2162734, 65536, 3, 2162735, 65536, 3, 1376271, 196608, 6, 1376307, 262144, 6, 1441840, 262144, 5, 1507376, 262144, 5, 1572912, 262144, 5, 1638448, 262144, 5, 1703984, 262144, 5, 1769520, 262144, 5, 1835056, 262144, 5, 1900592, 262144, 5, 1966128, 262144, 5, 2031664, 262144, 5, 2097200, 262144, 5, 1441833, 196608, 5, 1507369, 196608, 5, 1572905, 196608, 5, 1638441, 196608, 5, 1703977, 196608, 5, 1769513, 196608, 5, 1835049, 196608, 5, 1900585, 196608, 5, 1966121, 196608, 5, 2031657, 196608, 5, 2097193, 196608, 5, 2162729, 196608, 6, 2162736, 262144, 6, 786475, 196608, 1, 786454, 196608, 1, 655382, 196608, 0, 655403, 196608, 0, 524322, 65536, 0)
 layer_2/name = "Decoration"
 layer_2/tile_data = PackedInt32Array(786456, 65536, 18, 917528, 0, 19, 786472, 262145, 12, 524323, 589825, 0, 589859, 589825, 1, 852018, 131073, 1, 786474, 196609, 0, 852010, 196609, 3, 852009, 131073, 2, 720934, 589824, 11, 720933, 655360, 11, 917535, 524288, 12, 917536, 589824, 12, 983072, 524288, 13, 983073, 589824, 12, 1048609, 524288, 13, 1048610, 589824, 13, 983074, 524288, 12, 983075, 589824, 12, 1048611, 524288, 13, 1048612, 589824, 13, 983076, 589824, 12, 720943, 131073, 12, 720946, 131073, 12, 720915, 1, 12, 720912, 1, 12, 1769515, 524288, 12, 1769516, 589824, 12, 1835051, 524288, 13, 1835052, 589824, 13, 1900590, 458752, 13, 1638444, 655360, 11)
+script = ExtResource("2_w1j0f")
 
 [node name="Barrels" type="Node2D" parent="."]
 
 [node name="Barrel" parent="Barrels" instance=ExtResource("3_ftkjf")]
 position = Vector2(498, 161)
+loot_overwrite = "Key"
 id = 12
 
 [node name="Barrel2" parent="Barrels" instance=ExtResource("3_ftkjf")]
@@ -68,15 +71,19 @@ id = 9
 
 [node name="Door" parent="Doors" instance=ExtResource("4_4mmxm")]
 position = Vector2(464, 136)
+next_scene = "res://Scenes/Levels/level_3.2.tscn"
 
 [node name="Door2" parent="Doors" instance=ExtResource("4_4mmxm")]
 position = Vector2(528, 136)
+next_scene = "res://Scenes/Levels/level_3.3.tscn"
 
 [node name="Door3" parent="Doors" instance=ExtResource("4_4mmxm")]
 position = Vector2(592, 136)
+next_scene = "res://Scenes/Levels/level_3.4.tscn"
 
 [node name="Door4" parent="Doors" instance=ExtResource("4_4mmxm")]
 position = Vector2(784, 184)
+next_scene = "res://Scenes/Levels/level_3.5.tscn"
 locked = false
 
 [node name="Door5" parent="Doors" instance=ExtResource("4_4mmxm")]
@@ -88,7 +95,7 @@ locked = false
 curve = SubResource("Curve2D_q2qoc")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Skel1"]
-position = Vector2(295.03, 242.747)
+position = Vector2(295.03, 242.746)
 progress = 299.337
 rotates = false
 
@@ -102,7 +109,7 @@ speed = 3
 curve = SubResource("Curve2D_b1a05")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Skel2"]
-position = Vector2(473.794, 199.772)
+position = Vector2(473.794, 199.771)
 progress = 312.258
 rotates = false
 

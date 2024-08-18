@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bquxkwuy18e8o"]
+
+[ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_85dj5"]
+[ext_resource type="Script" path="res://Scripts/map.gd" id="2_2okxx"]
+[ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="2_4g3ic"]
+
+[node name="level 3_4" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -23776.0
+offset_top = -15145.0
+offset_right = 24581.0
+offset_bottom = 16029.0
+color = Color(0.0781567, 0.0781567, 0.0703441, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = ExtResource("1_85dj5")
+format = 2
+layer_0/name = "Floor"
+layer_1/name = "Walls"
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Decoration"
+layer_2/tile_data = PackedInt32Array()
+script = ExtResource("2_2okxx")
+
+[node name="Player" parent="." instance=ExtResource("2_4g3ic")]
+level = 8
