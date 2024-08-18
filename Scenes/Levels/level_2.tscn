@@ -41,6 +41,7 @@ position = Vector2(125, 136)
 [node name="Barrel2" parent="." instance=ExtResource("3_vpu6k")]
 position = Vector2(284, 233)
 loot_overwrite = "Keys"
+id = 7
 
 [node name="Door" parent="." instance=ExtResource("6_eisq6")]
 position = Vector2(240, 111)
@@ -60,3 +61,4 @@ h_flip_ratio_bigger = 0.46
 
 [node name="Player" parent="." instance=ExtResource("4_fyqvw")]
 position = Vector2(132, 212)
+level = 3

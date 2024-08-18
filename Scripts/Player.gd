@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var level: int
+
 @onready var tooltip = get_node("tooltip")
 @onready var animPlayer = get_node("AnimationPlayer")
 
@@ -13,6 +15,12 @@ var loot_node
 var can_unlock = false
 var unlock_node
 var got_caught = false
+
+func _ready():
+	for pos in vars.last_position:
+		if pos.level == level:
+			global_position = pos.pos
+			vars.last_position.erase(pos)
 
 func _physics_process(delta):
 	process_input(delta)
@@ -58,6 +66,8 @@ func _input(event):
 				unlock_node.set_text("No\nKey")
 		else:
 			var scene = load(unlock_node.next_scene)
+			var obj = load("res://Scripts/pos.gd").new(level, global_position)
+			vars.last_position.append(obj)
 			get_tree().change_scene_to_packed(scene)
 	elif event.is_action_pressed("interact") && can_speak:
 		if not is_speaking:

@@ -46,6 +46,7 @@ text = "Look to the left"
 [node name="Barrel" parent="." instance=ExtResource("3_uxkqg")]
 position = Vector2(277, 210)
 loot_overwrite = "Key"
+id = 6
 
 [node name="Door" parent="." instance=ExtResource("4_ywidl")]
 position = Vector2(224, 136)
@@ -54,6 +55,7 @@ locked = false
 
 [node name="Player" parent="." instance=ExtResource("6_6gpd2")]
 position = Vector2(224, 163)
+level = 2
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(16, 0)

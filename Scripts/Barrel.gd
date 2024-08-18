@@ -2,9 +2,13 @@ extends StaticBody2D
 
 @export var looted = false
 @export var loot_overwrite: String = ""
-
+@export var id: int
 
 func _ready():
+	for loot in vars.looted:
+		if loot == id:
+			looted = true
+	
 	if looted:
 		$Barrel.visible = false
 		$Barrel_empty.visible = true
@@ -20,5 +24,6 @@ func can_loot():
 
 func set_looted():
 	looted = true
+	vars.looted.append(id)
 	$Barrel.visible = false
 	$Barrel_empty.visible = true
