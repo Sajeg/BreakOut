@@ -73,7 +73,6 @@ func _input(event):
 	elif event.is_action_pressed("interact") && can_speak:
 		if not is_speaking:
 			ai_node.get_parent().get_node("./Label").visible = false
-			ai_node.get_parent().get_node("./Output").visible = true
 			$SpeakUI.visible = true
 			$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
 			update_inventory_list()
@@ -81,12 +80,17 @@ func _input(event):
 	elif event.is_action_pressed("exit") && can_speak:
 		if is_speaking:
 			ai_node.get_parent().get_node("./Label").visible = true
-			ai_node.get_parent().get_node("./Output").visible = false
+			$Output.visible = false
 			$SpeakUI.visible = false
 			$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
 			is_speaking = false
 	
-	
+
+func display_text(text):
+	$Output.visible = true
+	$Output.text = text
+	$Output.global_position = ai_node.get_parent().global_position - Vector2(110,(45)+($Output.get_line_count() * $Output.get_line_height()))
+
 func update_inventory_list():
 	$SpeakUI/Inventory.clear()
 	$SpeakUI/Inventory.add_item("Nothing")
@@ -148,7 +152,8 @@ func _on_timer_timeout():
 	$InventoryNotification.visible = false
 
 
-func _on_ai_manager_new_response(_text:String, _friendship:int, _inventory:Array):
+func _on_ai_manager_new_response(text:String, _friendship:int, _inventory:Array):
 	update_inventory_list()
 	$SpeakUI.request_ongoing = false
+	display_text(text)
 	

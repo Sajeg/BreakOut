@@ -197,14 +197,3 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wizard"]
 position = Vector2(1, -15)
 shape = SubResource("CircleShape2D_j45px")
-
-[node name="Output" type="Label" parent="."]
-offset_left = -145.0
-offset_top = -123.0
-offset_right = -13.0
-offset_bottom = -25.0
-theme = ExtResource("2_nhtf1")
-theme_override_font_sizes/font_size = 7
-horizontal_alignment = 2
-vertical_alignment = 2
-autowrap_mode = 3

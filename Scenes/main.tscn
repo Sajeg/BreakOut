@@ -138,12 +138,6 @@ character = "a friendly wizard. Your task is to keep the Dungeon clean. However 
 inventory = ["Key"]
 player = NodePath("../../Player")
 
-[node name="Output" parent="Wizard" index="7"]
-offset_left = -143.0
-offset_top = -117.0
-offset_right = -11.0
-offset_bottom = -19.0
-
 [node name="Player" parent="." instance=ExtResource("2_nuvfg")]
 position = Vector2(67, 153)
 motion_mode = 1
