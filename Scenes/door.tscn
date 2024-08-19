@@ -5,8 +5,7 @@
 [ext_resource type="Theme" uid="uid://cpwjiok04og8e" path="res://Assets/theme.tres" id="4_keond"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i8e66"]
-radius = 25.0
-height = 56.0
+height = 66.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_koe25"]
 size = Vector2(32, 12)

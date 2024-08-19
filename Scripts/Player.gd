@@ -98,9 +98,9 @@ func update_inventory_list():
 		$SpeakUI/Inventory.add_item(item)
 
 func add_to_inventory(item):
-# 	if item == "spikes_down":
-# 		vars.spikes = false
-# 		lever.set_state(false)
+	if item == "spikes_down":
+		get_parent().get_node("./AnimationPlayer").play("flip")
+		return
 	vars.inventory.append(item)
 	$InventoryNotification.text = item
 	$InventoryNotification.visible = true
@@ -157,3 +157,8 @@ func _on_ai_manager_new_response(text:String, _friendship:int, _inventory:Array)
 	$SpeakUI.request_ongoing = false
 	display_text(text)
 	
+
+
+func _on_flip_animation_animation_finished(_anim_name):
+	vars.spikes = false
+	lever.set_state(false)

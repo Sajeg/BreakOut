@@ -104,3 +104,7 @@ texture = ExtResource("10_mcqcb")
 [node name="Player" parent="." instance=ExtResource("2_j86fu")]
 position = Vector2(335, 358)
 level = 7
+
+[node name="Door2" parent="." instance=ExtResource("4_0xs05")]
+position = Vector2(496, 184)
+id = 4

@@ -29,6 +29,7 @@ script = ExtResource("2_2l2yt")
 
 [node name="Door" parent="." instance=ExtResource("2_jo7mp")]
 position = Vector2(192, -24)
+next_scene = "res://Scenes/Levels/level_3.tscn"
 
 [node name="Barrel" parent="." instance=ExtResource("3_upvif")]
 position = Vector2(168, 109)

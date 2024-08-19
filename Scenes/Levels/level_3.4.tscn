@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bquxkwuy18e8o"]
+[gd_scene load_steps=14 format=3 uid="uid://bquxkwuy18e8o"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_85dj5"]
 [ext_resource type="Script" path="res://Scripts/map.gd" id="2_2okxx"]
@@ -12,6 +12,163 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ix46r"]
 size = Vector2(12, 5)
+
+[sub_resource type="Animation" id="Animation_8br8o"]
+resource_name = "flip"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wizard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(187, 44), Vector2(187, 63)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wizard/Idle-sheet:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wizard/Run-sheet:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wizard/Run-sheet:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Wizard/Idle-sheet:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Wizard/Run-sheet:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_a80hx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wizard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(187, 44)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wizard/Idle-sheet:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wizard/Run-sheet:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wizard/Run-sheet:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Wizard/Idle-sheet:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Wizard/Run-sheet:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_61jp2"]
+_data = {
+"RESET": SubResource("Animation_a80hx"),
+"flip": SubResource("Animation_8br8o")
+}
 
 [node name="level 3_4" type="Node2D"]
 
@@ -32,6 +189,8 @@ layer_1/name = "Walls"
 layer_1/tile_data = PackedInt32Array(2, 131072, 0, 5, 0, 0, 6, 131072, 0, 8, 0, 0, 9, 65536, 0, 10, 65536, 0, 11, 65536, 0, 12, 131072, 0, 65543, 196608, 1, -65529, 196608, 0, 589837, 262144, 5, 524301, 262144, 5, 458765, 262144, 5, 393229, 262144, 5, 327693, 262144, 5, 262157, 262144, 5, 196621, 262144, 5, 131085, 262144, 5, 65549, 262144, 5, 13, 262144, 5, -65523, 262144, 4, 655372, 65536, 3, 655371, 65536, 3, 655370, 65536, 3, 655369, 65536, 3, 655368, 65536, 3, 655367, 65536, 3, 655366, 65536, 3, 655365, 65536, 3, 655364, 65536, 3, 655363, 65536, 3, 655362, 65536, 3, 655373, 262144, 6, -65536, 196608, 4, 0, 196608, 5, 65536, 196608, 5, 131072, 196608, 5, 196608, 196608, 5, 262144, 196608, 5, 327680, 196608, 5, 393216, 196608, 5, 458752, 196608, 5, 524288, 196608, 5, 589824, 196608, 5, 655360, 196608, 6, 1, 0, 0, 655361, 65536, 3, 4, 65536, 10, 3, 0, 10)
 layer_2/name = "Decoration"
 layer_2/tile_data = PackedInt32Array(65545, 262145, 2, 131081, 262145, 3, 196617, 262145, 4, 65546, 327681, 2, 131082, 327681, 3, 196618, 327681, 4, 262149, 196609, 12, 327685, 196609, 13, 327686, 65537, 4, 327684, 131073, 3, 393224, 524288, 12, 393225, 589824, 12, 458762, 589824, 13, 458761, 524288, 13, 327690, 589824, 11, 393226, 589824, 12)
+layer_3/name = "Table Decoration"
+layer_3/tile_data = PackedInt32Array(65546, 65537, 15, 131082, 655361, 5)
 script = ExtResource("2_2okxx")
 
 [node name="Door" parent="." instance=ExtResource("3_rpcrh")]
@@ -65,17 +224,32 @@ shape = SubResource("RectangleShape2D_ix46r")
 
 [node name="Wizard" parent="." instance=ExtResource("5_bymn7")]
 position = Vector2(187, 44)
+id = 4
+
+[node name="Idle-sheet" parent="Wizard" index="1"]
+visible = false
+
+[node name="Run-sheet" parent="Wizard" index="2"]
+visible = true
+frame = 1
 
 [node name="AIManager" parent="Wizard" index="5" node_paths=PackedStringArray("player")]
-character = "You are grumpy and unfriendly wizard in a Dungeon. You have a lever behind you, that you can use to lower the spikes. I can ask you to do that and then give me the item spikes_down from your inventory, but I first need to convince you to do that."
+character = "You are grumpy and unfriendly wizard in a Dungeon. You have a lever behind you, that you can use to lower the spikes. I can ask you to do that and then give me the item spikes_down from your inventory, but I first need to convince you to do that. If you still have spikes_down in your inventory it means that the lever is not flipped.s"
 inventory = ["spikes_down"]
 has_friendship = false
 player = NodePath("../../Player")
 
-[node name="Player" parent="." instance=ExtResource("2_4g3ic")]
+[node name="Player" parent="." node_paths=PackedStringArray("lever") instance=ExtResource("2_4g3ic")]
 position = Vector2(62, 35)
 level = 8
+lever = NodePath("../lever")
+
+[node name="FlipAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_61jp2")
+}
 
 [connection signal="new_response" from="Wizard/AIManager" to="Player" method="_on_ai_manager_new_response"]
+[connection signal="animation_finished" from="FlipAnimation" to="Player" method="_on_flip_animation_animation_finished"]
 
 [editable path="Wizard"]

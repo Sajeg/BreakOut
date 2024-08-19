@@ -86,6 +86,8 @@ func _on_http_request_request_completed(_result, response_code, _headers, body):
 		inventory = model_string["inventory"]
 		var model_message_object = load("res://Scripts/history_part.gd").new(model_message, "model")
 		history.append(model_message_object)
+		get_parent().get_node("./Output").text = model_message
+		print("|" + model_message + "|")
 		for save in vars.wizard_history:
 			if save.id == get_parent().id:
 				vars.wizard_history.erase(save)

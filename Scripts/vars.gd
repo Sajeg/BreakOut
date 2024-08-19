@@ -14,4 +14,6 @@ var last_position = []
 
 var wizard_history = []
 
+var opened = []
+
 var spikes = true

@@ -32,6 +32,7 @@ script = ExtResource("2_ovet6")
 [node name="Door" parent="." instance=ExtResource("3_4btgj")]
 position = Vector2(160, 104)
 next_scene = "res://Scenes/Levels/level_2.tscn"
+id = 3
 
 [node name="Door2" parent="." instance=ExtResource("3_4btgj")]
 position = Vector2(241, 104)
@@ -40,6 +41,7 @@ locked = false
 
 [node name="Wizard" parent="." instance=ExtResource("4_a630y")]
 position = Vector2(430, 319)
+id = 1
 
 [node name="AIManager" parent="Wizard" index="5" node_paths=PackedStringArray("player")]
 npc_name = "Fred"
@@ -50,6 +52,7 @@ player = NodePath("../../Player")
 
 [node name="Wizard2" parent="." instance=ExtResource("4_a630y")]
 position = Vector2(383, 145)
+id = 2
 
 [node name="AIManager" parent="Wizard2" index="5" node_paths=PackedStringArray("player")]
 npc_name = "Fred"

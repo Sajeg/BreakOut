@@ -72,14 +72,17 @@ id = 9
 [node name="Door" parent="Doors" instance=ExtResource("4_4mmxm")]
 position = Vector2(464, 136)
 next_scene = "res://Scenes/Levels/level_3.2.tscn"
+id = 4
 
 [node name="Door2" parent="Doors" instance=ExtResource("4_4mmxm")]
 position = Vector2(528, 136)
 next_scene = "res://Scenes/Levels/level_3.3.tscn"
+id = 5
 
 [node name="Door3" parent="Doors" instance=ExtResource("4_4mmxm")]
 position = Vector2(592, 136)
 next_scene = "res://Scenes/Levels/level_3.4.tscn"
+id = 6
 
 [node name="Door4" parent="Doors" instance=ExtResource("4_4mmxm")]
 position = Vector2(784, 184)
@@ -95,8 +98,8 @@ locked = false
 curve = SubResource("Curve2D_q2qoc")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Skel1"]
-position = Vector2(295.03, 242.746)
-progress = 299.337
+position = Vector2(355.289, 329.291)
+progress = 449.006
 rotates = false
 
 [node name="Skeleton" parent="Skel1/PathFollow2D" node_paths=PackedStringArray("path_follow", "player") instance=ExtResource("4_e8hvf")]
@@ -109,8 +112,8 @@ speed = 3
 curve = SubResource("Curve2D_b1a05")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Skel2"]
-position = Vector2(473.794, 199.771)
-progress = 312.258
+position = Vector2(535.174, 311.789)
+progress = 463.915
 rotates = false
 
 [node name="Skeleton" parent="Skel2/PathFollow2D" node_paths=PackedStringArray("path_follow", "player") instance=ExtResource("4_e8hvf")]
@@ -120,5 +123,5 @@ h_flip_ratio_bigger = 0.43
 speed = 3
 
 [node name="Player" parent="." instance=ExtResource("2_pmpfh")]
-position = Vector2(719, 510)
+position = Vector2(717, 519)
 level = 4

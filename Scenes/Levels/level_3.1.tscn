@@ -39,11 +39,12 @@ id = 15
 
 [node name="Wizard" parent="." instance=ExtResource("3_1hv1a")]
 position = Vector2(272, 146)
+id = 3
 
 [node name="AIManager" parent="Wizard" index="5" node_paths=PackedStringArray("player")]
 npc_name = "Rockie"
 character = "You are a merchant. You have some products and like to trade a lot. Sometimes you want multiple items because your items are more valuable."
-inventory = ["Key", "Talking Orc", "Fancy scarf", "Piece of paper"]
+inventory = ["Key", "Talking Orc", "Artifact", "Piece of paper"]
 player = NodePath("../../Player")
 
 [node name="Player" parent="." instance=ExtResource("4_74pdr")]
