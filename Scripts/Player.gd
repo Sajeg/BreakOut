@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 
 var speed = 120
+var intro_finished = false
 var can_speak = false
 var ai_node
 var is_speaking = false
@@ -28,7 +29,7 @@ func _physics_process(delta):
 	process_input(delta)
 
 func process_input(_delta):
-	if is_speaking || got_caught:
+	if is_speaking || got_caught || !intro_finished:
 		return
 	velocity.x = (Input.get_action_strength("right") - Input.get_action_strength("left")) * speed
 	velocity.y = (Input.get_action_strength("down") - Input.get_action_strength("up")) * speed

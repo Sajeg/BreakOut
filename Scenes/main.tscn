@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://xumfropcot62"]
+[gd_scene load_steps=15 format=3 uid="uid://xumfropcot62"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_0q3is"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_5bmjq"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="2_nuvfg"]
 [ext_resource type="Theme" uid="uid://cpwjiok04og8e" path="res://Assets/theme.tres" id="4_7m6mf"]
 [ext_resource type="PackedScene" uid="uid://csd6ikilylmnc" path="res://Scenes/wizard.tscn" id="4_gi0r6"]
@@ -8,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Guide.gd" id="5_b7ms5"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="6_tdxaa"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="8_e8xbr"]
+[ext_resource type="AudioStream" uid="uid://bh817numofi4d" path="res://Assets/Voice Lines/intro.wav" id="10_4pg62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpmyv"]
 size = Vector2(127.5, 57)
@@ -22,6 +24,7 @@ radius = 43.1856
 size = Vector2(110, 89)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_5bmjq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -23776.0
@@ -143,6 +146,11 @@ player = NodePath("../../Player")
 position = Vector2(67, 153)
 motion_mode = 1
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(-67, -153)
+stream = ExtResource("10_4pg62")
+autoplay = true
+
 [connection signal="area_entered" from="Guide0/Guide0Area" to="Guide0" method="_on_guide_0_area_area_entered"]
 [connection signal="area_exited" from="Guide0/Guide0Area" to="Guide0" method="_on_guide_0_area_area_exited"]
 [connection signal="area_entered" from="Guide1/Guide1Area" to="Guide0" method="_on_guide_1_area_area_entered"]
@@ -152,5 +160,6 @@ motion_mode = 1
 [connection signal="area_entered" from="Guide3/Guide3Area" to="Guide0" method="_on_guide_3_area_area_entered"]
 [connection signal="area_exited" from="Guide3/Guide3Area" to="Guide0" method="_on_guide_3_area_area_exited"]
 [connection signal="new_response" from="Wizard/AIManager" to="Player" method="_on_ai_manager_new_response"]
+[connection signal="finished" from="Player/AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
 
 [editable path="Wizard"]
