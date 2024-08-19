@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dpqk5atfghdg1"]
+[gd_scene load_steps=19 format=3 uid="uid://dpqk5atfghdg1"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_63pwf"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="2_j86fu"]
@@ -9,9 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="6_aahme"]
 [ext_resource type="Texture2D" uid="uid://bipgevhclcx6r" path="res://Assets/skeleton/Idle-Sheet.png" id="7_mkdr2"]
 [ext_resource type="Texture2D" uid="uid://clus8nhfwom6x" path="res://Assets/skeleton/Death-Sheet.png" id="9_3qjqb"]
+[ext_resource type="Texture2D" uid="uid://qjp7bnf571mp" path="res://Assets/skeleton/Run-Sheet.png" id="9_b8flp"]
 [ext_resource type="Texture2D" uid="uid://ceblmyxtr6wii" path="res://Assets/skeleton/Hands.png" id="10_mcqcb"]
 [ext_resource type="Texture2D" uid="uid://btitahw6hkvs7" path="res://Assets/skeleton/wand.png" id="10_ynmav"]
 [ext_resource type="AudioStream" uid="uid://c1pklj7auceti" path="res://Assets/Voice Lines/enemie1.wav" id="11_fy3pm"]
+[ext_resource type="AudioStream" uid="uid://b87kgq3as8ovw" path="res://Assets/Voice Lines/enemie2.wav" id="12_y7tfn"]
 
 [sub_resource type="Animation" id="Animation_xgqab"]
 resource_name = "talk"
@@ -92,7 +94,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/6/path = NodePath("Talk:playing")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -227,7 +229,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/6/path = NodePath("Talk:playing")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -270,7 +272,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -284,10 +286,243 @@ tracks/10/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Soldier1Run:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(375, 234)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Soldier1Run:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Soldier2Run:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Soldier2Run:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(394, 248)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Soldier1:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Soldier2:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Kill:playing")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Soldier1Run:frame")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Soldier2Run:frame")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_t4url"]
+resource_name = "kill"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Soldier1Run:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(387, 222), Vector2(450, 211)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Soldier1Run:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Soldier2Run:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Soldier2Run:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(394, 248), Vector2(394, 248), Vector2(424, 236)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Soldier1:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Soldier2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Kill:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Soldier1Run:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 0, 1, 2, 3]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Soldier2Run:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Soldier2:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38wcc"]
 _data = {
 "RESET": SubResource("Animation_4yr03"),
+"kill": SubResource("Animation_t4url"),
 "talk": SubResource("Animation_xgqab")
 }
 
@@ -357,17 +592,33 @@ flip_h = true
 hframes = 6
 
 [node name="Soldier1" type="Sprite2D" parent="Scene"]
+visible = false
 texture_filter = 1
 position = Vector2(389, 237)
 texture = ExtResource("7_mkdr2")
+flip_h = true
 hframes = 4
 
+[node name="Soldier1Run" type="Sprite2D" parent="Scene"]
+texture_filter = 1
+position = Vector2(375, 234)
+texture = ExtResource("9_b8flp")
+hframes = 6
+
 [node name="Soldier2" type="Sprite2D" parent="Scene"]
+visible = false
 texture_filter = 1
 position = Vector2(396, 262)
 texture = ExtResource("7_mkdr2")
 flip_h = true
 hframes = 4
+
+[node name="Soldier2Run" type="Sprite2D" parent="Scene"]
+visible = false
+texture_filter = 1
+position = Vector2(394, 248)
+texture = ExtResource("9_b8flp")
+hframes = 6
 
 [node name="Weapon" type="Node2D" parent="Scene"]
 position = Vector2(359, 260)
@@ -382,9 +633,13 @@ texture = ExtResource("10_ynmav")
 texture_filter = 1
 texture = ExtResource("10_mcqcb")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Scene"]
+[node name="Talk" type="AudioStreamPlayer2D" parent="Scene"]
 position = Vector2(361, 244)
 stream = ExtResource("11_fy3pm")
+
+[node name="Kill" type="AudioStreamPlayer2D" parent="Scene"]
+position = Vector2(361, 244)
+stream = ExtResource("12_y7tfn")
 
 [node name="Player" parent="." instance=ExtResource("2_j86fu")]
 position = Vector2(335, 358)
