@@ -22,6 +22,7 @@ func _ready():
 		if pos.level == level:
 			global_position = pos.pos
 			vars.last_position.erase(pos)
+	$Camera2D.position_smoothing_enabled = true
 
 func _physics_process(delta):
 	process_input(delta)
@@ -100,6 +101,19 @@ func update_inventory_list():
 func add_to_inventory(item):
 	if item == "spikes_down":
 		get_parent().get_node("./AnimationPlayer").play("flip")
+		ai_node.get_parent().get_node("./Label").visible = true
+		$Player/Output.visible = false
+		$SpeakUI.visible = false
+		$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
+		is_speaking = false
+		return
+	elif item == "destroy_crate":
+		get_parent().get_node("./AnimationPlayer").play("destroy2")
+		ai_node.get_parent().get_node("./Label").visible = true
+		$Output.visible = false
+		$SpeakUI.visible = false
+		$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
+		is_speaking = false
 		return
 	vars.inventory.append(item)
 	$InventoryNotification.text = item
@@ -153,9 +167,9 @@ func _on_timer_timeout():
 
 
 func _on_ai_manager_new_response(text:String, _friendship:int, _inventory:Array):
+	display_text(text)
 	update_inventory_list()
 	$SpeakUI.request_ongoing = false
-	display_text(text)
 	
 
 

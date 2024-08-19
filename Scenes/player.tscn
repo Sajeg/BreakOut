@@ -231,7 +231,6 @@ shape = SubResource("CircleShape2D_ng2hl")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, -13)
 zoom = Vector2(3, 3)
-position_smoothing_enabled = true
 
 [node name="tooltip" type="Label" parent="."]
 visible = false
@@ -358,17 +357,12 @@ libraries = {
 
 [node name="Output" type="Label" parent="."]
 visible = false
-clip_contents = true
-offset_right = 100.0
-offset_bottom = 7.3
-size_flags_horizontal = 2
-size_flags_vertical = 10
+offset_right = 110.0
+offset_bottom = 14.0
 theme = ExtResource("6_qraek")
-theme_override_font_sizes/font_size = 6
 horizontal_alignment = 2
 vertical_alignment = 2
 autowrap_mode = 3
-text_overrun_behavior = 1
 
 [connection signal="area_entered" from="Player" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Player" to="." method="_on_area_2d_area_exited"]
