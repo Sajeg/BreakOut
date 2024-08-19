@@ -63,10 +63,6 @@ texture = ExtResource("8_rg8vk")
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_ix46r")
 
-[node name="Player" parent="." instance=ExtResource("2_4g3ic")]
-position = Vector2(62, 35)
-level = 8
-
 [node name="Wizard" parent="." instance=ExtResource("5_bymn7")]
 position = Vector2(187, 44)
 
@@ -75,5 +71,11 @@ character = "You are grumpy and unfriendly wizard in a Dungeon. You have a lever
 inventory = ["spikes_down"]
 has_friendship = false
 player = NodePath("../../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_4g3ic")]
+position = Vector2(62, 35)
+level = 8
+
+[connection signal="new_response" from="Wizard/AIManager" to="Player" method="_on_ai_manager_new_response"]
 
 [editable path="Wizard"]

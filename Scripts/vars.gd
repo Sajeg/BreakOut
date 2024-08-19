@@ -12,4 +12,6 @@ var looted = []
 
 var last_position = []
 
+var wizard_history = []
+
 var spikes = true

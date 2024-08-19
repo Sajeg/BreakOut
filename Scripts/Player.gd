@@ -98,9 +98,9 @@ func update_inventory_list():
 		$SpeakUI/Inventory.add_item(item)
 
 func add_to_inventory(item):
-	if item == "spikes_down":
-		vars.spikes = false
-		lever.set_state(false)
+# 	if item == "spikes_down":
+# 		vars.spikes = false
+# 		lever.set_state(false)
 	vars.inventory.append(item)
 	$InventoryNotification.text = item
 	$InventoryNotification.visible = true

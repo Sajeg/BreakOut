@@ -50,4 +50,6 @@ player = NodePath("../../Player")
 position = Vector2(240, 84)
 level = 5
 
+[connection signal="new_response" from="Wizard/AIManager" to="Player" method="_on_ai_manager_new_response"]
+
 [editable path="Wizard"]
