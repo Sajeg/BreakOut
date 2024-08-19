@@ -101,9 +101,9 @@ func update_inventory_list():
 
 func add_to_inventory(item):
 	if item == "spikes_down":
-		get_parent().get_node("./AnimationPlayer").play("flip")
+		get_parent().get_node("./FlipAnimation").play("flip")
 		ai_node.get_parent().get_node("./Label").visible = true
-		$Player/Output.visible = false
+		$Output.visible = false
 		$SpeakUI.visible = false
 		$SpeakUI/Name.text = "Give to " + ai_node.npc_name + ":"
 		is_speaking = false
@@ -177,3 +177,11 @@ func _on_ai_manager_new_response(text:String, _friendship:int, _inventory:Array)
 func _on_flip_animation_animation_finished(_anim_name):
 	vars.spikes = false
 	lever.set_state(false)
+
+
+func _on_skeletons_finished():
+	vars.played_voice_2 = true
+
+
+func _on_multiple_skeletons_finished():
+	vars.played_voice_3 = true

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpltripjs3xor"]
+[gd_scene load_steps=11 format=3 uid="uid://bpltripjs3xor"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_lx1t2"]
+[ext_resource type="Script" path="res://Scripts/level_1.5.gd" id="1_vsgr8"]
 [ext_resource type="Theme" uid="uid://cpwjiok04og8e" path="res://Assets/theme.tres" id="2_1al6g"]
 [ext_resource type="Script" path="res://Scripts/map.gd" id="2_akgu4"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="3_uxkqg"]
@@ -16,6 +17,7 @@ _data = {
 point_count = 5
 
 [node name="Level1_5" type="Node2D"]
+script = ExtResource("1_vsgr8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -23776.0
@@ -58,9 +60,8 @@ locked = false
 position = Vector2(224, 163)
 level = 2
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+[node name="Skeletons" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("7_hdvm4")
-autoplay = true
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(16, 0)
@@ -75,3 +76,5 @@ rotates = false
 path_follow = NodePath("..")
 player = NodePath("../../../Player")
 blind = true
+
+[connection signal="finished" from="Player/Skeletons" to="Player" method="_on_skeletons_finished"]

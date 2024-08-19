@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://dpqk5atfghdg1"]
+[gd_scene load_steps=24 format=3 uid="uid://dpqk5atfghdg1"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_63pwf"]
+[ext_resource type="Script" path="res://Scripts/level_3.3.gd" id="1_gtxjo"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="2_j86fu"]
 [ext_resource type="Script" path="res://Scripts/map.gd" id="2_kbp8y"]
+[ext_resource type="Texture2D" uid="uid://dfnx4lhvtekfg" path="res://Assets/blood.png" id="3_bqy5r"]
 [ext_resource type="PackedScene" uid="uid://c7nchaclmj50b" path="res://Scenes/door.tscn" id="4_0xs05"]
 [ext_resource type="PackedScene" uid="uid://byedh3yfj8frs" path="res://Scenes/spikes.tscn" id="4_mhubk"]
 [ext_resource type="Texture2D" uid="uid://cnrahxa7l1kg6" path="res://Assets/skeleton/king-idle.png" id="6_354lc"]
@@ -12,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://qjp7bnf571mp" path="res://Assets/skeleton/Run-Sheet.png" id="9_b8flp"]
 [ext_resource type="Texture2D" uid="uid://ceblmyxtr6wii" path="res://Assets/skeleton/Hands.png" id="10_mcqcb"]
 [ext_resource type="Texture2D" uid="uid://btitahw6hkvs7" path="res://Assets/skeleton/wand.png" id="10_ynmav"]
+[ext_resource type="Texture2D" uid="uid://bbsn5ciog3mgf" path="res://Assets/skeleton/KingRun.png" id="11_17os2"]
 [ext_resource type="AudioStream" uid="uid://c1pklj7auceti" path="res://Assets/Voice Lines/enemie1.wav" id="11_fy3pm"]
 [ext_resource type="AudioStream" uid="uid://b87kgq3as8ovw" path="res://Assets/Voice Lines/enemie2.wav" id="12_y7tfn"]
+[ext_resource type="AudioStream" uid="uid://b362ua44sk0ic" path="res://Assets/Voice Lines/caught.wav" id="17_1me6m"]
 
 [sub_resource type="Animation" id="Animation_xgqab"]
 resource_name = "talk"
@@ -22,26 +26,26 @@ step = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("King:frame")
+tracks/0/path = NodePath("King:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1, 1.2, 1.4, 1.7, 2, 2.2, 2.5, 2.8, 3, 3.2, 3.4, 3.7, 4, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 5.9, 6.2, 6.5, 6.7, 6.9, 7.1, 7.4, 7.7, 7.9, 8.2, 8.7, 8.9, 9.1, 9.2, 9.4, 9.7, 9.9, 10.2, 10.5, 10.8, 11.1, 11.3, 11.5, 11.8, 12.1, 12.4, 12.5, 12.7, 13, 13.3, 13.5, 13.8, 14.1, 14.3, 14.5, 14.7, 15, 15.3, 15.5, 15.8, 16.1, 16.3, 16.5, 16.7, 17, 17.3, 17.5, 17.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 1, 2, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 1, 2, 3, 3, 0, 1, 2, 3, 2, 1, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("King:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(358, 250)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("King:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1, 1.2, 1.4, 1.7, 2, 2.2, 2.5, 2.8, 3, 3.2, 3.4, 3.7, 4, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 5.9, 6.2, 6.5, 6.7, 6.9, 7.1, 7.4, 7.7, 7.9, 8.2, 8.7, 8.9, 9.1, 9.2, 9.4, 9.7, 9.9, 10.2, 10.5, 10.8, 11.1, 11.3, 11.5, 11.8, 12.1, 12.4, 12.5, 12.7, 13, 13.3, 13.5, 13.8, 14.1, 14.3, 14.5, 14.7, 15, 15.3, 15.5, 15.8, 16.1, 16.3, 16.5, 16.7, 17, 17.3, 17.5, 17.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 1, 2, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 1, 2, 3, 3, 0, 1, 2, 3, 2, 1, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -157,26 +161,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("King:frame")
+tracks/0/path = NodePath("King:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Vector2(358, 250)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("King:position")
+tracks/1/path = NodePath("King:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(358, 250)]
+"values": [0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -308,7 +312,7 @@ tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
@@ -344,7 +348,7 @@ tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
@@ -356,7 +360,7 @@ tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
@@ -394,10 +398,107 @@ tracks/19/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Soldier2Death:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Soldier2Death:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(425, 244)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Soldier2Death:frame")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("../Blood:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("King:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("KingRun:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("KingRun:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(361, 237)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("KingRun:frame")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_t4url"]
 resource_name = "kill"
 length = 8.0
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -405,10 +506,10 @@ tracks/0/path = NodePath("Soldier1Run:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1, 6.6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(387, 222), Vector2(450, 211)]
+"values": [Vector2(387, 222), Vector2(450, 211), Vector2(450, 211), Vector2(496, 181)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -417,10 +518,10 @@ tracks/1/path = NodePath("Soldier1Run:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 6.6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false, true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -429,10 +530,10 @@ tracks/2/path = NodePath("Soldier2Run:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.8, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, true, false, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -453,10 +554,10 @@ tracks/4/path = NodePath("Soldier1:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 6.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false]
+"values": [false, true, false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -465,10 +566,10 @@ tracks/5/path = NodePath("Soldier2:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.8, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [true, false, true, false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -477,7 +578,7 @@ tracks/6/path = NodePath("Kill:playing")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -489,10 +590,10 @@ tracks/7/path = NodePath("Soldier1Run:frame")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 6.6, 6.8, 7, 7.2, 7.4, 7.6, 7.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 0, 1, 2, 3]
+"values": [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -513,10 +614,214 @@ tracks/9/path = NodePath("Soldier2:frame")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Soldier2Death:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Soldier2:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(396, 262), Vector2(396, 262), Vector2(426, 250)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Soldier2:flip_h")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Soldier2Death:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(4.8),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(425, 244)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Soldier2Death:frame")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(5, 5.2, 5.4, 5.6, 5.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../Blood:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 5.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Soldier1:flip_h")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Soldier1:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("King:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 3.4, 4.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(358, 250), Vector2(358, 250), Vector2(405, 252)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Weapon:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(3.4, 4.4, 4.8, 5, 5.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(357, 256), Vector2(403, 257), Vector2(403, 257), Vector2(413, 256), Vector2(406, 256)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("King:frame")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Weapon:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(4.4, 4.8, 5.8, 6.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 1.5708, 0.0]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("King:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 1, 3.4, 4.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("KingRun:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 3.4, 4.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [false, true, false]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("KingRun:position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(3.4, 4.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(361, 237), Vector2(408, 238)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("KingRun:frame")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(3.4, 3.6, 3.8, 4, 4.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Soldier1:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(389, 238), Vector2(448, 227)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38wcc"]
@@ -526,7 +831,11 @@ _data = {
 "talk": SubResource("Animation_xgqab")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jai8c"]
+size = Vector2(171, 95)
+
 [node name="level_3_3" type="Node2D"]
+script = ExtResource("1_gtxjo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -23776.0
@@ -547,6 +856,12 @@ layer_2/name = "Decoration"
 layer_2/tile_data = PackedInt32Array(786457, 65536, 18, 917529, 0, 19, 786452, 1, 0, 786453, 1, 2, 851988, 131073, 2, 851989, 196609, 2)
 script = ExtResource("2_kbp8y")
 
+[node name="Blood" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(440, 264)
+texture = ExtResource("3_bqy5r")
+
 [node name="Spikes" type="Node2D" parent="."]
 
 [node name="Spikes" parent="Spikes" instance=ExtResource("4_mhubk")]
@@ -566,6 +881,10 @@ position = Vector2(336, 328)
 next_scene = "res://Scenes/Levels/level_3.tscn"
 locked = false
 
+[node name="Door2" parent="." instance=ExtResource("4_0xs05")]
+position = Vector2(496, 184)
+id = 4
+
 [node name="Barrel" parent="." instance=ExtResource("6_aahme")]
 position = Vector2(302, 345)
 id = 18
@@ -577,12 +896,6 @@ libraries = {
 "": SubResource("AnimationLibrary_38wcc")
 }
 
-[node name="King" type="Sprite2D" parent="Scene"]
-texture_filter = 1
-position = Vector2(358, 250)
-texture = ExtResource("6_354lc")
-hframes = 4
-
 [node name="Death" type="Sprite2D" parent="Scene"]
 visible = false
 texture_filter = 1
@@ -592,7 +905,6 @@ flip_h = true
 hframes = 6
 
 [node name="Soldier1" type="Sprite2D" parent="Scene"]
-visible = false
 texture_filter = 1
 position = Vector2(389, 237)
 texture = ExtResource("7_mkdr2")
@@ -600,13 +912,13 @@ flip_h = true
 hframes = 4
 
 [node name="Soldier1Run" type="Sprite2D" parent="Scene"]
+visible = false
 texture_filter = 1
 position = Vector2(375, 234)
 texture = ExtResource("9_b8flp")
 hframes = 6
 
 [node name="Soldier2" type="Sprite2D" parent="Scene"]
-visible = false
 texture_filter = 1
 position = Vector2(396, 262)
 texture = ExtResource("7_mkdr2")
@@ -618,6 +930,27 @@ visible = false
 texture_filter = 1
 position = Vector2(394, 248)
 texture = ExtResource("9_b8flp")
+hframes = 6
+
+[node name="Soldier2Death" type="Sprite2D" parent="Scene"]
+visible = false
+texture_filter = 1
+position = Vector2(425, 244)
+texture = ExtResource("9_3qjqb")
+flip_h = true
+hframes = 6
+
+[node name="King" type="Sprite2D" parent="Scene"]
+texture_filter = 1
+position = Vector2(358, 250)
+texture = ExtResource("6_354lc")
+hframes = 4
+
+[node name="KingRun" type="Sprite2D" parent="Scene"]
+visible = false
+texture_filter = 1
+position = Vector2(361, 237)
+texture = ExtResource("11_17os2")
 hframes = 6
 
 [node name="Weapon" type="Node2D" parent="Scene"]
@@ -641,10 +974,21 @@ stream = ExtResource("11_fy3pm")
 position = Vector2(361, 244)
 stream = ExtResource("12_y7tfn")
 
+[node name="Caught" type="AudioStreamPlayer2D" parent="Scene"]
+position = Vector2(357, 246)
+stream = ExtResource("17_1me6m")
+
+[node name="CaughtAnimation" type="Area2D" parent="Scene"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/CaughtAnimation"]
+position = Vector2(421, 236)
+shape = SubResource("RectangleShape2D_jai8c")
+
 [node name="Player" parent="." instance=ExtResource("2_j86fu")]
 position = Vector2(335, 358)
 level = 7
 
-[node name="Door2" parent="." instance=ExtResource("4_0xs05")]
-position = Vector2(496, 184)
-id = 4
+[connection signal="animation_finished" from="Scene/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="Scene/CaughtAnimation" to="." method="_on_caught_animation_area_entered"]

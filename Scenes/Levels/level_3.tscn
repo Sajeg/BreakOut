@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbiysoi0d3xc4"]
+[gd_scene load_steps=11 format=3 uid="uid://cbiysoi0d3xc4"]
 
 [ext_resource type="TileSet" uid="uid://iga47b5fiujd" path="res://Assets/tileSet.tres" id="1_3nmsw"]
+[ext_resource type="Script" path="res://Scripts/level_3.gd" id="1_lsvhf"]
 [ext_resource type="PackedScene" uid="uid://bys67aluqyox4" path="res://Scenes/player.tscn" id="2_pmpfh"]
 [ext_resource type="Script" path="res://Scripts/map.gd" id="2_w1j0f"]
 [ext_resource type="PackedScene" uid="uid://vlj7bhi0c4gq" path="res://Scenes/barrel.tscn" id="3_ftkjf"]
@@ -21,6 +22,7 @@ _data = {
 point_count = 9
 
 [node name="Level 3" type="Node2D"]
+script = ExtResource("1_lsvhf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -23776.0
@@ -127,6 +129,7 @@ speed = 3
 position = Vector2(717, 519)
 level = 4
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+[node name="MultipleSkeletons" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("7_ogl2v")
-autoplay = true
+
+[connection signal="finished" from="Player/MultipleSkeletons" to="Player" method="_on_multiple_skeletons_finished"]
