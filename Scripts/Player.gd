@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 
 var speed = 120
-var intro_finished = false
+var intro_finished = true
 var can_speak = false
 var ai_node
 var is_speaking = false
