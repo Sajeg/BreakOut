@@ -10,7 +10,9 @@ If you want to try it right now you need to download the project and create a ``
 api_key= # Your Gemini API Key
 ```
 
-Or you can wait and watch this video until then:
+Or you can wait and watch this video until then and see me trying to play the game and then needing to fix a bug:
 
-https://github.com/user-attachments/assets/a4f52082-06ef-4da7-9584-5c0c0e8a2bed
+https://github.com/user-attachments/assets/eeb09551-6165-4465-912c-fa3465f489a9
+
+
 
