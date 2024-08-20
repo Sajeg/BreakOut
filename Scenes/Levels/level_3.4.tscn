@@ -200,9 +200,11 @@ locked = false
 
 [node name="Barrel" parent="." instance=ExtResource("4_6spd2")]
 position = Vector2(27, 118)
+id = 19
 
 [node name="Barrel2" parent="." instance=ExtResource("4_6spd2")]
 position = Vector2(136, 31)
+id = 20
 
 [node name="lever" type="StaticBody2D" parent="."]
 position = Vector2(201, 50)

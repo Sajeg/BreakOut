@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://fa0w7f06pj0"]
+[gd_scene load_steps=10 format=3 uid="uid://fa0w7f06pj0"]
 
 [ext_resource type="Texture2D" uid="uid://cmpi0dv5ob1qx" path="res://Assets/crate.png" id="1_iap2i"]
 [ext_resource type="Script" path="res://Scripts/crate.gd" id="1_lim2s"]
 [ext_resource type="Texture2D" uid="uid://lgwxnubcgwtc" path="res://Assets/crate2.png" id="2_w3rjd"]
 [ext_resource type="Texture2D" uid="uid://csinp2rjrqale" path="res://Assets/crate1.png" id="3_w60fm"]
+[ext_resource type="AudioStream" uid="uid://db2fth7r3flfp" path="res://Assets/Effects/crate.mp3" id="5_fyql1"]
 
 [sub_resource type="Animation" id="Animation_3l6ba"]
 length = 0.001
@@ -120,3 +121,6 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_84pkx")
+
+[node name="Effect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_fyql1")

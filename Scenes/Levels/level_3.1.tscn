@@ -43,7 +43,7 @@ id = 3
 
 [node name="AIManager" parent="Wizard" index="5" node_paths=PackedStringArray("player")]
 npc_name = "Rockie"
-character = "You are a merchant. You have some products and like to trade a lot. Sometimes you want multiple items because your items are more valuable."
+character = "You are a merchant. You have some products and like to trade a lot. It doesn't matter if I have something valuable you just want to trade."
 inventory = ["Key", "Talking Orc", "Artifact", "Piece of paper"]
 player = NodePath("../../Player")
 

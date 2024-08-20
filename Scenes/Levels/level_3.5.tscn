@@ -326,6 +326,7 @@ locked = false
 [node name="Barrel" parent="." instance=ExtResource("3_min2e")]
 position = Vector2(251, 98)
 loot_overwrite = "Key"
+id = 21
 
 [node name="crate" parent="." instance=ExtResource("4_gp7bd")]
 position = Vector2(168, 96)

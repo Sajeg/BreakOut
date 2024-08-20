@@ -41,7 +41,7 @@ id = 8
 
 [node name="Barrel2" parent="." instance=ExtResource("3_vpu6k")]
 position = Vector2(284, 233)
-loot_overwrite = "Keys"
+loot_overwrite = "Key"
 id = 7
 
 [node name="Door" parent="." instance=ExtResource("6_eisq6")]

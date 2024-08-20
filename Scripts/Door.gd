@@ -14,6 +14,7 @@ func _ready():
 func unlock():
 	$Sprite2D.visible = false
 	locked = false
+	vars.opened.append(id)
 
 func text_visible(state):
 	$Label.visible = state

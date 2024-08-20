@@ -5,8 +5,8 @@ var available_loot = [
 ]
 
 # For Debug purpose I have many Keys
-var inventory = ["Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key"]
-# var inventory = []
+#var inventory = ["Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key","Key"]
+var inventory = []
 
 var looted = []
 

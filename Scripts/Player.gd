@@ -89,6 +89,8 @@ func _input(event):
 	
 
 func display_text(text):
+	$Output.text = ""
+	$Output.size = Vector2(110,14)
 	$Output.visible = true
 	$Output.text = text
 	$Output.global_position = ai_node.get_parent().global_position - Vector2(110,(45)+($Output.get_line_count() * $Output.get_line_height()))
@@ -175,6 +177,7 @@ func _on_ai_manager_new_response(text:String, _friendship:int, _inventory:Array)
 
 
 func _on_flip_animation_animation_finished(_anim_name):
+	$Output.visible = false
 	vars.spikes = false
 	lever.set_state(false)
 
