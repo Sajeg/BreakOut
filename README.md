@@ -17,7 +17,7 @@ api_key= # Your Gemini API Key
 ## Controls
 It's pretty simple and gets explained at the begginning but here are the controls:
 
-## Basic controls
+### Basic controls
 | Key | Action |
 | ------------- | ------------- |
 | W | Walk forward|
@@ -26,7 +26,7 @@ It's pretty simple and gets explained at the begginning but here are the control
 | D | Walk right|
 | E | Interact|
 
-## Change view
+### Change view
 | Key | Action |
 | ------------- | ------------- |
 | F | Toggle fullscreen|
