@@ -11,4 +11,5 @@ func _on_animation_player_animation_finished(anim_name:StringName):
 	elif anim_name == "destroy2":
 		$crate2.destroy()
 		$AnimationPlayer.play("rotate_back")
-		$Player.display_text($Player/Output.text)
+		$Player.update_pos()
+		$Player/Output.visible = false

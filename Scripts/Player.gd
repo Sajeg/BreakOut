@@ -31,6 +31,8 @@ func _physics_process(delta):
 func process_input(_delta):
 	if is_speaking || got_caught || !intro_finished:
 		return
+	if $Output.visible:
+		update_pos()
 	velocity.x = (Input.get_action_strength("right") - Input.get_action_strength("left")) * speed
 	velocity.y = (Input.get_action_strength("down") - Input.get_action_strength("up")) * speed
 	var is_idling = is_zero_approx(velocity.y) && is_zero_approx(velocity.x)
@@ -93,6 +95,9 @@ func display_text(text):
 	$Output.size = Vector2(110,14)
 	$Output.visible = true
 	$Output.text = text
+	update_pos()
+	
+func update_pos():
 	$Output.global_position = ai_node.get_parent().global_position - Vector2(110,(45)+($Output.get_line_count() * $Output.get_line_height()))
 
 func update_inventory_list():
@@ -177,6 +182,7 @@ func _on_ai_manager_new_response(text:String, _friendship:int, _inventory:Array)
 
 
 func _on_flip_animation_animation_finished(_anim_name):
+	update_pos()
 	$Output.visible = false
 	vars.spikes = false
 	lever.set_state(false)
