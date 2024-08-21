@@ -3,15 +3,14 @@ extends Node2D
 
 func _ready():
 	if !vars.animation_played:
+		vars.animation_played = true
 		$Scene/AnimationPlayer.play("talk")
 	else:
-		$Scene.visible = false
+		$Scene.queue_free()
 
 func _on_animation_player_animation_finished(anim_name:StringName):
 	if anim_name == "talk":
 		$Scene/AnimationPlayer.play("kill")
-	else:
-		vars.animation_played = true
 
 
 func _on_caught_animation_area_entered(area:Area2D):

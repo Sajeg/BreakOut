@@ -20,6 +20,8 @@ var spikes = true
 
 var animation_played = false
 
+var destroyed_crate = false
+
 var played_voice_1 = false
 
 var played_voice_2 = false

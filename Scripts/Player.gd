@@ -17,6 +17,7 @@ var loot_node
 var can_unlock = false
 var unlock_node
 var got_caught = false
+var is_fullscreen = false
 
 func _ready():
 	for pos in vars.last_position:
@@ -52,7 +53,13 @@ func _input(event):
 		$Camera2D.zoom += Vector2(0.1,0.1)
 	elif event.is_action("zoom out"):
 		$Camera2D.zoom -= Vector2(0.1,0.1)
-			
+	
+	if event.is_action_pressed("fullscreen"):
+		if is_fullscreen == true:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		if is_fullscreen == false:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
 	if event.is_action_pressed("interact") && can_loot:
 		if loot_node.loot_overwrite != "":
 			loot_node.set_looted()

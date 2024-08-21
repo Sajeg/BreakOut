@@ -324,9 +324,14 @@ next_scene = "res://Scenes/Levels/level_3.tscn"
 locked = false
 
 [node name="Barrel" parent="." instance=ExtResource("3_min2e")]
-position = Vector2(251, 98)
+position = Vector2(199, 82)
 loot_overwrite = "Key"
 id = 21
+
+[node name="Barrel2" parent="." instance=ExtResource("3_min2e")]
+position = Vector2(260, 100)
+loot_overwrite = "Key"
+id = 22
 
 [node name="crate" parent="." instance=ExtResource("4_gp7bd")]
 position = Vector2(168, 96)
