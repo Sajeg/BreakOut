@@ -54,11 +54,13 @@ func _input(event):
 	elif event.is_action("zoom out"):
 		$Camera2D.zoom -= Vector2(0.1,0.1)
 	
-	if event.is_action_pressed("fullscreen"):
-		if is_fullscreen == true:
+	if event.is_action_pressed("fullscreen") && !is_speaking:
+		if !is_fullscreen:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		if is_fullscreen == false:
+			is_fullscreen = true
+		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			is_fullscreen = false
 	
 	if event.is_action_pressed("interact") && can_loot:
 		if loot_node.loot_overwrite != "":

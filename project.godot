@@ -21,10 +21,6 @@ config/icon="res://icon.svg"
 vars="*res://Scripts/vars.gd"
 BackgroundMusic="*res://Scenes/background_music.tscn"
 
-[display]
-
-window/size/resizable=false
-
 [input]
 
 up={
